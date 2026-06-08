@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年6月3日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">腾讯Agent内测 · 恒生科技大涨 · AI生态入口之争</p>
+            <p class="header-date">2026年6月3日 · 周三 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>恒生科技大涨4.7%</strong>
+                        腾讯单日暴涨10%，四五年来最大单日涨幅，AI智能体预期扭转估值逻辑
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">🤖</div>
+                    <div class="summary-text">
+                        <strong>腾讯内测AI智能体</strong>
+                        最快本月启动合规审批，Agent可调用腾讯生态海量小程序，生态优势碾压竞品
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">⚖️</div>
+                    <div class="summary-text">
+                        <strong>左侧配置纪律</strong>
+                        恒生科技要有但设上限（不超30%），跌时补一点，涨时规律兑现利润
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">💻</div>
+                    <div class="summary-text">
+                        <strong>AIPC下半年爆发</strong>
+                        英特尔联合微软打造完全助理型AIPC，内置智能体能力，端侧AI进入新阶段
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">恒生科技大涨：腾讯单日暴涨10%的逻辑逆转</h3>
+                <span class="section-tag">港股市场</span>
+            </div>
+            <div class="content">
+                <p>昨日港股出现久违的大涨，<strong>恒生科技上涨4.7%</strong>，其中<strong>腾讯单日暴涨10%</strong>——这是印象里面四五年来最大的一次单日涨幅。</p>
+
+                <p>回顾过去一年多恒生科技表现较差的原因，我们此前已多次分析：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>压力来源</th>
+                            <th>具体表现</th>
+                            <th>当前状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">外卖大战</td>
+                            <td class="trend-down">美团、京东、阿里"三傻"内卷，利润殆尽</td>
+                            <td>反内卷政策持续推进</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">小米造车</td>
+                            <td class="trend-down">卖车业务遇到经营波折</td>
+                            <td>逐步消化</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">AI进展落后</td>
+                            <td class="trend-down">阿里腾讯AI布局未让投资者满意</td>
+                            <td class="trend-up">Agent催化扭转预期</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>催化剂：</strong>腾讯内测AI智能体（Agent）的消息彻底扭转了市场对其"与AI没啥关系"的固有认知——原来不是跟AI关系弱，而是动作慢、但一旦出手就是生态级的收割。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">腾讯Agent：小程序生态的终极收割者</h3>
+                <span class="section-tag">AI生态</span>
+            </div>
+            <div class="content">
+                <p>腾讯最快<strong>本月启动AI智能体的合规审批流程</strong>。其核心能力在于：用户可以通过AI智能体调用腾讯生态的<strong>海量小程序</strong>，完成点单、订票、订酒店等复杂任务。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🟡 阿里的困境</h4>
+                        <ul>
+                            <li>只能打通自己内部APP（淘宝、饿了么）</li>
+                            <li>别人不愿加入：怕被垄断、利润被抽走80-90%</li>
+                            <li>生态封闭，难以扩展</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 腾讯的优势</h4>
+                        <ul>
+                            <li>小程序本来就寄生在腾讯生态上</li>
+                            <li>商家离不开微信流量入口</li>
+                            <li>腾讯说"不让调用就下架小程序"</li>
+                            <li>生态覆盖广度碾压所有竞品</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>场景示例：</strong>你说"我要买一杯茶颜悦色的奶茶，买哪个品种"，Agent直接完成下单；说"明天订杭州西湖边的五星级酒店，推荐最便宜的直接订好"，Agent一站式搞定。这就是未来——你对助理下命令，覆盖生态越广的公司越胜出。</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>"小公司创业型公司你必须快，因为你不快的话你根本没有办法在腾讯这种平台公司之间找到生存空间。但腾讯是可以看到市场走通一条路之后再出来做收割的一方，因为他有资源——附着在他平台上的客户、小程序、商家，就是认他宰割的生态。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">配置纪律：左侧布局的两条铁律</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>我们一直强调恒生科技是海外配置中<strong>必须有的方向</strong>，但需要注意纪律：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 铁律一：设上限</h4>
+                        <ul>
+                            <li>恒生科技持仓不超过30%</li>
+                            <li>海外配置均衡：美国、日本、韩国、恒生各约1/4</li>
+                            <li>防止组合过度偏配某一方向</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 铁律二：跌时加</h4>
+                        <ul>
+                            <li>基本面没有走坏、配置逻辑未破坏</li>
+                            <li>从科技/美日韩赚的钱逐渐放一些到恒生</li>
+                            <li>A股科技跌、恒生涨时，组合感受会舒服很多</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>反面教训：</strong>过去一年老灯在跌、科技在涨，如果一直无上限地补仓老灯，科技在组合中占比越来越低——而科技恰恰是这轮流动的<strong>主线</strong>，整体投资收益必然受损。</p>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>利润兑现：</strong>上涨过程中规律性兑现利润——涨出来10%，一部分利润拿出去，一部分放到基本面未恶化但表现一般的方向上。这正是过去一段时间在恒生科技上的正确节奏。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">2B端Agent之战：阿里"悟空" vs 腾讯"WorkBody"</h3>
+                <span class="section-tag">企业服务</span>
+            </div>
+            <div class="content">
+                <p>除了2C端的Agent入口之争，2B端企业级AI工具也在加速落地：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>产品</th>
+                            <th>整合能力</th>
+                            <th>对标定位</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">阿里</td>
+                            <td>"悟空"</td>
+                            <td>钉钉 + 通义千问 + 阿里云 + 平头哥</td>
+                            <td>2B端AI赋能工具，替代传统SaaS</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">腾讯</td>
+                            <td>"WorkBody"</td>
+                            <td>元宝模型能力打通</td>
+                            <td>与悟空强对标，2B端企业服务工具</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>下半年看点：</strong>这些2B工具将逐渐走进企业应用端。其意义类似<strong>腾讯刚推出微信的那一年</strong>——手机端的应用生态将发生巨大变化。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">端侧AI新变量：AIPC下半年迎来爆发</h3>
+                <span class="section-tag">硬件前沿</span>
+            </div>
+            <div class="content">
+                <p>下半年端侧AI将有多项重要进展：</p>
+
+                <p><strong>英特尔联合微软</strong>宣布打造全新的AIPC。与此前不成熟的AIPC不同，下一代产品将是<strong>完全助理型</strong>：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 下一代AIPC特征</h4>
+                        <ul>
+                            <li>内置智能体（Agent）能力</li>
+                            <li>无需逐个打开应用程序</li>
+                            <li>完全助理型交互</li>
+                            <li>软硬件界面显著提升</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 判断依据</h4>
+                        <ul>
+                            <li>上半年已提示AIPC可能出现爆款</li>
+                            <li>原来不成熟：AIPC与普通PC无明显差异</li>
+                            <li>现在质变：智能体+端侧算力结合</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>趋势判断：</strong>今年下半年是AIPC从概念走向真正爆款的关键节点。端侧AI硬件+智能体软件的深度融合，将带来消费电子领域的重大变革。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月16日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">美股创历史新高 · 创新药首发定价迎利好 · 战争冲击完全修复</p>
+            <p class="header-date">2026年4月16日 · 周四 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>美股连续11天上涨创历史新高</strong>
+                        纳指和标普连涨11日，日韩接近历史新高，全球资本市场完全修复战争冲击
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">💊</div>
+                    <div class="summary-text">
+                        <strong>创新药首发定价迎重大利好</strong>
+                        国务院明确优化创新药新上市药品首发价格机制，结束"不能自主定价"时代
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">⚠️</div>
+                    <div class="summary-text">
+                        <strong>集采控费的代价</strong>
+                        企业创新动力下降、海外厂商退出、被迫BD（卖猪仔），机制理顺后有望恢复
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">📊</div>
+                    <div class="summary-text">
+                        <strong>日韩完全修复</strong>
+                        韩国6200（历史新高6300），日本58000（历史新高59000），开盘继续涨1%+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">全球资本市场完全修复战争冲击</h3>
+                <span class="section-tag">全球市场</span>
+            </div>
+            <div class="content">
+                <p>纳斯达克和标普500<strong>连续11天上涨</strong>，创历史新高。市场对美伊延长停火、谈判取得成果抱有极度乐观预期。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>市场</th>
+                            <th>当前位置</th>
+                            <th>历史新高</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>纳斯达克</td>
+                            <td colspan="2" class="trend-up">历史新高</td>
+                            <td>连涨11日</td>
+                        </tr>
+                        <tr>
+                            <td>标普500</td>
+                            <td colspan="2" class="trend-up">历史新高</td>
+                            <td>连涨11日</td>
+                        </tr>
+                        <tr>
+                            <td>韩国综合</td>
+                            <td>6,200</td>
+                            <td>6,300</td>
+                            <td class="trend-up">仅差100点</td>
+                        </tr>
+                        <tr>
+                            <td>日经指数</td>
+                            <td>58,000</td>
+                            <td>59,000</td>
+                            <td class="trend-up">仅差1,000点</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>战争冲击完全修复：</strong>从冲突最激烈时各国股市暴跌，到现在全球市场完全收复失地——日韩从低点涨超20%，完全验证了"受冲击资产逐步增配"的策略。开盘日韩继续上涨1%以上。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">创新药首发定价迎重大利好：从"卖猪仔"到"养猪"</h3>
+                <span class="section-tag">医药政策</span>
+            </div>
+            <div class="content">
+                <p>国务院办公厅印发<strong>《关于健全药品价格形成机制的若干意见》</strong>，明确提出优化创新药新上市药品的首发价格机制，这是创新药行业的标志性利好。</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>过去困局——不能自主定价：</strong>药企花十几年研发出一条管线，本来这个药想卖3万元，跟医保谈谈谈，最后只能卖6,000元进医保。不进医保卖3万没人买，进医保6,000元研发投入这辈子收不回来。企业做新管线一算账算不过来就不干了，创新动力大幅下降。</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>负面影响</th>
+                            <th>表现</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>海外厂商退出</td>
+                            <td>价格压太低，外企不跟你玩</td>
+                        </tr>
+                        <tr>
+                            <td>质量保障问题</td>
+                            <td>国产药品打几针不管用——治病是为了治好，不是为了便宜</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">被迫BD（卖猪仔）</td>
+                            <td>技术实力不错但缺钱，把专利卖给海外大厂——是卖猪仔还是养猪？</td>
+                        </tr>
+                        <tr>
+                            <td>创新动力下降</td>
+                            <td>算不过账就不干了</td>
+                        </tr>
+                        <tr>
+                            <td>海外申请药号增加</td>
+                            <td>国内赚不到钱，去海外做；BD交易金额高说明技术实力不错但缺钱</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>拐点确认：</strong>2024年底创新药拐点出现时就已观察到集采和医保控费的温和化。此次用文件形式明确创新药首发定价支持，是从"倒逼BD卖猪仔"到"自主发展养猪"的关键转变。中国创新药产业有望恢复，<strong>中长期价值仍在</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">宁德时代的启示：创新力+统治力+盈利能力</h3>
+                <span class="section-tag">产业观察</span>
+            </div>
+            <div class="content">
+                <p>宁德时代的季报说明了两个关键问题：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 产业链独占优势</h4>
+                        <ul>
+                            <li>在锂电产业链中具有独一无二的地位</li>
+                            <li>锂电和储能方向处于复苏中</li>
+                            <li>验证了我们之前对拐点的判断</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 向上游延伸</h4>
+                        <ul>
+                            <li>设立资源集团</li>
+                            <li>向锂矿等上游资源延伸</li>
+                            <li>把握核心资源，强化护城河</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>我们需要更多这样的公司：</strong>既有创新力，又有统治力，同时又能赚钱。而不是像光伏一样占全球80%市场份额结果全行业亏损。</p>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>反例——阿里内卷：</strong>阿里回来第一件事是先折腾别人，然后把自己也打进去。最近一个季度利润只有160亿——<strong>内卷造成的</strong>。如果中国像宁德时代这样的公司越来越多，资本市场走势也会越来越健康。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">景气反转主线：从创新药到消费的轮动预期</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>创新药是今年"拥抱科技、尊重老登"中<strong>景气反转主线最早确认拐点的板块</strong>。政策端持续改善（集采温和化→首发定价放开）加上企业端业绩验证（药明康德、信达生物、百济神州等Q1业绩向好），创新药在中长期配置中的价值依然坚实。</p>
+
+                <div class="highlight-box">
+                    <p><strong>近期表现：</strong>这几天创新药板块已经有所活跃，创新药仍然是中长期有机会的方向。</p>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>轮动预期：</strong>今年景气反转的方向比较明确——创新药、锂电、光伏、猪肉。随着周期深入，<strong>下半年可能看到消费有一些复苏的迹象</strong>。这些都是今年驱动中国资本市场发展的主线力量。</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>"今年是看好科技、尊重老登。为什么要尊重老登？因为今年很多的老登都见到景气的反转和业绩的增长。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

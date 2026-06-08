@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月24日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">光模块短期风险警示 · 从信仰低谷到情绪巅峰</p>
+            <p class="header-date">2026年4月24日 · 周五 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>中际旭创一年涨十余倍</strong>
+                        从66元到900元，"要信早信"的先信者已获利丰厚，一年前在市场抛弃光信仰时坚定持有
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">⚠️</div>
+                    <div class="summary-text">
+                        <strong>短期情绪过热</strong>
+                        "你相信光吗"成热梗，最傻的资金拿着老灯好几年现已冲进光模块，是典型见顶信号
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🔄</div>
+                    <div class="summary-text">
+                        <strong>先信者卖给后信者</strong>
+                        去年60块信的人应把筹码卖给900块才信的人，光模块短期绝非买入时机
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">💡</div>
+                    <div class="summary-text">
+                        <strong>股市不可能三角</strong>
+                        低估值+高成长+好业绩同时出现是天赐良机，去年4月光模块三者兼具，必须重仓把握
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">从"信仰低谷"到"情绪巅峰"的十三倍之旅</h3>
+                <span class="section-tag">光模块</span>
+            </div>
+            <div class="content">
+                <p>近期A股市场流行一个热梗——<strong>"你相信光吗"</strong>。股民交流时，没有持仓光模块仿佛"不好意思打招呼"。这种情绪狂热，正是主讲人发出警示的背景。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>时间节点</th>
+                            <th>价格/状态</th>
+                            <th>市场情绪</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">2025年4月（一年前）</td>
+                            <td>中际旭创约66元</td>
+                            <td class="trend-down">市场抛弃"光信仰"，担忧中美脱钩</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">2026年4月（当前）</td>
+                            <td>中际旭创约900元</td>
+                            <td class="trend-up">"站在光里"成热梗，全民追光</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">涨幅</td>
+                            <td class="trend-up">10倍+（十余倍）</td>
+                            <td>先信者获利丰厚，后信者高位接盘</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>一年前批驳脱钩逻辑：</strong>主讲人当时明确指出——贸易战是为了恶心别人，不是为了恶心自己。以中国企业水平，美国想不用、马上找替代是不可能的。若当时在66元坚守信仰，至今已获五到十倍收益。</p>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>当前判断：</strong>光模块已进入<strong>"要信早信，没信现在也不要信"</strong>的阶段。最傻的资金拿着老灯好几年，现已忍不住冲进光模块——这是典型的短期见顶信号。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">股市"不可能三角"与人性反思</h3>
+                <span class="section-tag">投资哲学</span>
+            </div>
+            <div class="content">
+                <p>主讲人以A股20余年、经历三轮重大周期的经验指出：<strong>股市的不可能三角（低估值 + 高成长 + 好业绩同时出现）极其罕见。</strong></p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>占三角中的几样</th>
+                            <th>典型案例</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">常态好公司</td>
+                            <td>占两样</td>
+                            <td>大多数优质企业的常态</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">银行</td>
+                            <td>低估值 + 好业绩</td>
+                            <td class="trend-down">缺成长，所以不涨</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">寒武纪</td>
+                            <td>高成长 + 赛道优</td>
+                            <td class="trend-down">缺业绩与低估值</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">光模块（去年4月）</td>
+                            <td class="trend-up">三样全占</td>
+                            <td class="trend-up">动态PE仅约10倍，AI需求爆发，利润高增长——天赐良机</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="quote-block">
+                    <p>"去年四月份，光模块三样占全，这是天赐的良机。你唯一需要做的，是安顿好自己的心灵，不要被市场的暴跌吓倒。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>人性拷问：</strong>为什么涨了十几倍之后，900块的中际旭创反而比66块时更有吸引力？回到一年前反思——<strong>恐惧时不敢买，狂热时不想卖</strong>，这是绝大多数投资者的致命弱点。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">策略建议：先信者兑现，后信者观望</h3>
+                <span class="section-tag">操作纪律</span>
+            </div>
+            <div class="content">
+                <p>主讲人给出了非常清晰的操作建议，核心就一句话：<strong>先信者卖给后信者。</strong></p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 没有持仓者</h4>
+                        <ul>
+                            <li>短期绝对不要凑热闹</li>
+                            <li>光模块已不适合再参与</li>
+                            <li>等待像样的调整后再考虑</li>
+                            <li>不要被"站在光里"的情绪裹挟</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 已有持仓者</h4>
+                        <ul>
+                            <li>若持有大比例浮盈仓位</li>
+                            <li>建议兑现一部分本金与利润</li>
+                            <li>保留底仓配置，规避短中期风险</li>
+                            <li>规矩地执行减仓纪律</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>中长期判断：</strong>主讲人明确表态——<strong>光模块基本面很好，绝非不看好。</strong>光通信领域中长期仍是中国算力产业链中最具竞争力的板块。但所有乐观情绪已被定价到股价中，短中期需要像样的调整。类比商业航天板块今年1月后的走势——板块不是因为逻辑完结而跌，而是因为情绪过热、拥挤度太高。</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>"该配的都配了，最傻的资金拿着老灯拿了好几年，现在都已经忍不住冲到光里面去了——这个时候就是短期见顶的标志。不要拿我们的警示不当回事，到时候说'那时候怎么没卖'——该卖的时候就要卖。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

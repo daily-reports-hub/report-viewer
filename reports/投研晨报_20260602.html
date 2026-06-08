@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年6月2日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(192,57,43,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">海外市场新高 · 风格切换应对 · 长鑫上市解读</p>
+            <p class="header-date">2026年6月2日 · 星期二 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">🚀</div>
+                    <div class="summary-text">
+                        <strong>海外齐创历史新高</strong>
+                        纳斯达克首破27000点，日经逼近67000点历史新高，韩国从5000翻倍至8800点
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🔴</div>
+                    <div class="summary-text">
+                        <strong>风格切换催化：查漂移</strong>
+                        监管严查公募基金风格漂移，消费/医疗基金被迫卖出科技股回归本位
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🟢</div>
+                    <div class="summary-text">
+                        <strong>长鑫上市≠A股见顶</strong>
+                        与中芯国际上市时全面泡沫完全不同，当前仅局部科技估值偏高
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">⚖️</div>
+                    <div class="summary-text">
+                        <strong>恒持满仓+规律兑现</strong>
+                        科技配得少的趁跌加仓，已有配置的保持不变；规律性兑现利润是核心纪律
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">海外新高与A股调整的鲜明对比</h3>
+                <span class="section-tag">全球视野</span>
+            </div>
+            <div class="content">
+                <p>隔夜海外市场继续高歌猛进：<strong>纳斯达克收盘27,086点</strong>，涨0.42%，历史上首次收盘站上27,000点；<strong>日经指数66,900点</strong>，马上触及67,000点历史高点；<strong>韩国综合指数8,800点</strong>，距离9,000点仅一步之遥——要知道美伊战争期间最低仅5,000点，指数近乎翻倍。</p>
+
+                <p>与海外市场形成鲜明对比的是，<strong>A股科创指数连续两天暴跌</strong>。这种内外分化的格局引发了广泛焦虑：为什么别人创新高，我们却下跌？</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>核心观察：</strong>美日韩新高反映的是AI算力产业链的全球化扩散与资金持续流入；而A股科技调整更多是<strong>内部结构性因素</strong>导致，而非基本面逆转。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">风格切换的真相：公募基金"查漂移"</h3>
+                <span class="section-tag">市场分析</span>
+            </div>
+            <div class="content">
+                <p>本轮A股科技调整的核心催化，是<strong>监管部门对公募基金风格漂移的集中检查</strong>。所谓风格漂移，即挂羊头卖狗肉——消费基金买科技、医疗基金买光模块、医药基金买AI。</p>
+
+                <p>为什么基金经理要这么做？原因很简单：<strong>过去几年消费/老灯不涨，基金经理有排名压力，基金公司有维持规模压力</strong>。于是很多基金偷偷摸摸地买了光模块、通信、AI等科技方向，并用各种方式合理化（如"通信最终是AI消费token带动的，所以算消费"）。</p>
+
+                <p>今年以来，风格漂移达到极端状态——传统/消费类公司的配置比例处于<strong>历史低点</strong>，而科技配置不断创出新高。监管部门此时出手，要求基金回归比较基准，于是消费基金被迫卖出科技股、买回消费/老灯，引发了剧烈的风格切换。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 短期承压方向</h4>
+                        <ul>
+                            <li>光模块、通信等被漂移基金超配的科技细分</li>
+                            <li>前期涨幅过大、筹码松动的科技龙头</li>
+                            <li>半导体设备、芯片设计等拥挤度高的方向</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 短期受益方向</h4>
+                        <ul>
+                            <li>消费、医药等被超低配的"老灯"板块</li>
+                            <li>沪深300代表的偏传统指数</li>
+                            <li>基金经理被迫回补的基准成分股</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"你去买一个医疗基金，结果这个医疗基金买了科技——你本来是科技兑现的钱想去买医疗医药，结果又买了个科技。对投资者来说，挂羊头卖狗肉不好识别。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">应对策略：不同持仓者的操作路径</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>面对风格切换，不同持仓状态的投资者应采取不同的应对策略：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>持仓状态</th>
+                            <th>前期操作</th>
+                            <th>当前应对</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">科技已配4-5成<br>且已兑现利润</td>
+                            <td>前期涨20-30%时规律性兑现利润</td>
+                            <td class="trend-up"><strong>不动</strong>——不增不减，本金在里面，心态平稳</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">科技配得少<br>或一直没敢配</td>
+                            <td>看着涨不敢追，只配了老灯</td>
+                            <td class="trend-up"><strong>趁跌加仓</strong>——老灯涨科技跌时，慢慢把科技底仓打起来</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">满仓科技<br>从未兑现利润</td>
+                            <td>前期涨幅未做兑现</td>
+                            <td class="trend-down"><strong>反思纪律</strong>——涨时不兑现，跌时必然慌</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>核心纪律：</strong>原来已经有的、比例较高的、做了盈利兑现的——<strong>待在那就行</strong>；原来没有或比例低的——<strong>趁老灯涨科技跌时重新做组合平衡</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">长鑫科技上市：≠A股见顶</h3>
+                <span class="section-tag">深度研判</span>
+            </div>
+            <div class="content">
+                <p>市场流传一种说法：长鑫科技上市后A股就要见顶，就像当年中芯国际上市一样。这个类比存在根本性错误：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>对比维度</th>
+                            <th>中芯国际上市时</th>
+                            <th>长鑫科技上市时</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">市场整体估值</td>
+                            <td class="trend-down">历史最高点，全面泡沫</td>
+                            <td class="trend-up">仅局部科技偏高，整体合理</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">公司自身周期</td>
+                            <td class="trend-down">盈利巅峰期，上市后即下滑</td>
+                            <td class="trend-up">非业绩高点，2027年增速仍可保持</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">市场份额空间</td>
+                            <td class="trend-down">已是行业龙头，增长空间有限</td>
+                            <td class="trend-up">全球DRAM市占率不到8%，有很大抢占空间</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">行业竞争格局</td>
+                            <td class="trend-down">成熟市场，格局已定</td>
+                            <td class="trend-up">存储芯片第四极，追赶三星/海力士/美光</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>但需要警惕的是：<strong>长鑫上市后半导体芯片板块可能出现阶段性调整</strong>。这类似去年人形机器人、今年卫星通信/商业航天在IPO节点后的表现——资金兑现意愿强烈。但这不等于见顶，更不等于牛市结束。</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>风险提示：</strong>不要试图猜测板块见顶时点。你能做到的是<strong>规律性兑现利润</strong>——100万赚了50万，把50万拿出去；100万赚了60万，把60万拿出去。利润拿出来了，心态自然平稳。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">牛市生存法则：恒持满仓+规律性兑现</h3>
+                <span class="section-tag">心态管理</span>
+            </div>
+            <div class="content">
+                <p>一轮十年一遇的牛市中，最大的风险不是下跌，而是<strong>没有正确的操作方法论</strong>。涨时不知道怎么办，跌时也不知道怎么办——那你到底想怎么办？</p>
+
+                <p>正确的操作节奏只有三句话：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 恒持满仓</h4>
+                        <ul>
+                            <li>牛市中空仓或轻仓是最大的风险</li>
+                            <li>始终保持足够仓位在场</li>
+                            <li>用组合结构控制风险，而非用仓位</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 规律性兑现利润</h4>
+                        <ul>
+                            <li>100万赚了50万，拿50万出去</li>
+                            <li>不猜顶，用纪律代替判断</li>
+                            <li>兑现几次后，利润比本金还高</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>终极纪律：</strong>利润不要返场。兑现出来的钱比本金还多的时候，心态自然就好——不用天天问"跌了两天我该怎么办"。</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>"你按照这样方式，一定会兑现到利润，兑现到比自己的本金还要多。我现在已经实现了，大家可能还没有，但你按照这样方式你会达到这样的结果。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h3 class="section-title">未来产业IPO加速：宇树6月1日过会</h3>
+                <span class="section-tag">产业动态</span>
+            </div>
+            <div class="content">
+                <p>6月1日，<strong>宇树科技IPO过会</strong>，与未来产业主题日形成巧妙呼应。昨天《求是》杂志发文将未来产业提升至"强国建设、民族复兴"的战略高度，今天人形机器人龙头就完成上市审核——这不是巧合，而是资本市场服务国家战略的节奏体现。</p>
+
+                <div class="highlight-box">
+                    <p><strong>未来产业寄语：</strong>我们的未来产业是现在产业里的儿童，但代表中国未来的选择。祝未来产业节日快乐，发展一片顺遂！</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

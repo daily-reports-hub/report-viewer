@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月9日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">全球股市暴涨 · 三星Q1暴增755% · 停战预期强化</p>
+            <p class="header-date">2026年4月9日 · 周三 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>全球股市集体暴涨</strong>
+                        A股科创板+6%，韩国触发向上熔断+7%，海力士+13%，美股三大指数均涨2.5%以上
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🔥</div>
+                    <div class="summary-text">
+                        <strong>三星Q1暴增755%</strong>
+                        单季利润2600亿超去年全年，动态PE回到10倍，存储芯片中长线逻辑强化
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🕊️</div>
+                    <div class="summary-text">
+                        <strong>停战预期强化</strong>
+                        美伊均有结束意愿，巴基斯坦调解，中国可能发挥重要推动作用
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">💡</div>
+                    <div class="summary-text">
+                        <strong>基本面研究的意义</strong>
+                        知道为什么涨才能拿得住——存储芯片的业绩推动类似前几年英伟达
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">全球市场集体暴涨：停战预期下的全面狂欢</h3>
+                <span class="section-tag">全球市场</span>
+            </div>
+            <div class="content">
+                <p>随着美伊谈判开始和战争暂停，全球市场迎来全面狂欢，是一个大回血日。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>市场/标的</th>
+                            <th>涨幅</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">A股科创板</td>
+                            <td class="trend-up">+6.0%</td>
+                            <td>领涨A股</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">A股创业板</td>
+                            <td class="trend-up">+5.9%</td>
+                            <td>大回血日</td>
+                        </tr>
+                        <tr>
+                            <td>A股深成指</td>
+                            <td class="trend-up">+4.79%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>A股上证指数</td>
+                            <td class="trend-up">+2.7%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">韩国综合指数</td>
+                            <td class="trend-up">+7%</td>
+                            <td>触发向上熔断</td>
+                        </tr>
+                        <tr>
+                            <td>日经指数</td>
+                            <td class="trend-up">+5%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">海力士</td>
+                            <td class="trend-up">+13%</td>
+                            <td>存储芯片龙头单日暴涨</td>
+                        </tr>
+                        <tr>
+                            <td>三星电子</td>
+                            <td class="trend-up">+7-8%</td>
+                            <td>业绩超预期驱动</td>
+                        </tr>
+                        <tr>
+                            <td>纳斯达克</td>
+                            <td class="trend-up">+2.8%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>道琼斯</td>
+                            <td class="trend-up">+2.85%</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>标普500</td>
+                            <td class="trend-up">+2.51%</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">三星一季度暴增755%：业绩驱动的中长线机会</h3>
+                <span class="section-tag">半导体</span>
+            </div>
+            <div class="content">
+                <p>三星发布一季度业绩预告，<strong>同比增长755%</strong>，单季利润约2600亿人民币，已超过去年全年净利润。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>季度</th>
+                            <th>净利润（亿人民币）</th>
+                            <th>趋势/说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025 Q1</td>
+                            <td>395</td>
+                            <td>去年同期基数</td>
+                        </tr>
+                        <tr>
+                            <td>2025 Q2</td>
+                            <td class="trend-down">287</td>
+                            <td>季节性回落（每年二季度较一般）</td>
+                        </tr>
+                        <tr>
+                            <td>2025 Q3</td>
+                            <td class="trend-up">585</td>
+                            <td>加速增长</td>
+                        </tr>
+                        <tr>
+                            <td>2025 Q4</td>
+                            <td class="trend-up">883</td>
+                            <td>持续加速</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">2026 Q1</td>
+                            <td class="trend-up">2600+</td>
+                            <td>暴增755%，超去年全年</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>估值重构：</strong>三星史上最高利润年份是2022年（约3000亿），按当前增速，全年利润将大幅刷新纪录。之前担心20-30倍PE偏贵，但以当前增速，<strong>动态PE回到10倍左右</strong>——估值焦虑完全解除。这也是在海峡关闭、韩股被打压时可以参与的最核心原因。</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>"存储芯片这一轮的拐点在哪？目前还没看到基本面的拐点。就像前几年的英伟达一样，它是一个中长线的机会。不要单纯看涨幅就觉得要完蛋了——你要知道它是因为业绩推动的。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">基本面研究的意义：知道为什么涨才能拿得住</h3>
+                <span class="section-tag">投资方法论</span>
+            </div>
+            <div class="content">
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 错误做法</h4>
+                        <ul>
+                            <li>单纯看韩国股市涨幅觉得"要完蛋了"</li>
+                            <li>简单问"韩国能不能买"而不问底层逻辑</li>
+                            <li>看涨幅大就恐慌卖出</li>
+                            <li>不知道业绩驱动就握不住筹码</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 正确做法</h4>
+                        <ul>
+                            <li>理解韩国股市上涨的核心逻辑</li>
+                            <li>存储芯片龙头（三星、海力士）业绩暴增</li>
+                            <li>动态追踪行业基本面变化</li>
+                            <li>看到基本面拐点时才考虑兑现</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>核心逻辑链：</strong>存储芯片龙头业绩暴增 → 股价持续上涨但估值未失控 → 韩国股市暴涨。如果不理解底层逻辑，单纯看涨幅就会觉得"涨太多了要完蛋"，从而像错过英伟达一样错过中长线机会。</p>
+                </div>
+
+                <p>做投资研究的核心是<strong>动态追踪行业基本面</strong>。当大致能看到基本面拐点的时候，这些个股也基本到了阶段性高点。这就是为什么平时要做基本面动态研究的原因。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">停战前景：多方推动，乐观可期</h3>
+                <span class="section-tag">地缘政治</span>
+            </div>
+            <div class="content">
+                <p>市场明显相信本轮谈判能取得好结果。各方态度如下：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>参与方</th>
+                            <th>态度</th>
+                            <th>角色</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">美国</td>
+                            <td class="trend-up">有结束意愿</td>
+                            <td>当事人，希望体面收场</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">伊朗</td>
+                            <td class="trend-up">有结束意愿</td>
+                            <td>当事人，不希望继续付出代价</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">巴基斯坦</td>
+                            <td class="trend-up">积极调解</td>
+                            <td>中间调解方</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">中国</td>
+                            <td class="trend-up">可能发挥重要作用</td>
+                            <td>幕后推动力量</td>
+                        </tr>
+                        <tr>
+                            <td>以色列、沙特</td>
+                            <td class="trend-down">不希望停手</td>
+                            <td>非当事人但希望战争继续</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>判断不变：</strong>主体战争结束为期不远，但中间会有反复。能源产业的长期影响还会延续一段时间，但已无足轻重。操作策略明确——<strong>兑现受益资产，增配受损资产</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

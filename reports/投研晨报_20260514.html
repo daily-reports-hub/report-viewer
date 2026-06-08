@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月14日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+        
+        /* Executive Summary */
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(192,57,43,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .executive-summary h2::before {
+            content: "◆";
+            font-size: 10px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+        
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        /* Sections */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+        
+        /* Content */
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        
+        .content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        
+        .highlight-box.alert {
+            border-left-color: var(--red);
+        }
+        
+        .highlight-box.success {
+            border-left-color: var(--green);
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        /* Impact Matrix */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+        
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+        
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        
+        /* Quote */
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: """;
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+        
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table .trend-up {
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        .data-table .trend-down {
+            color: var(--red);
+            font-weight: 600;
+        }
+        
+        .data-table .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 20px;
+            }
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">宏观策略 · 权益市场 · 资产配置</p>
+            <p class="header-date">2026年5月14日 · 星期四 · 音频纪要整理</p>
+        </header>
+        
+        <!-- Executive Summary -->
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">🤝</div>
+                    <div class="summary-text">
+                        <strong>特朗普访华</strong>
+                        携企业家天团抵京，中美互释善意，芯片与新能源车出口管制或松动
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🏦</div>
+                    <div class="summary-text">
+                        <strong>沃什掌舵美联储</strong>
+                        确认就任美联储主席，通胀未控前不扩表，但不排斥降息
+                    </div>
+                </div>
+                <div class="summary-item">
+                        <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>创业板历史新高</strong>
+                        PE仅48倍（2015年为135倍），估值分位51%，远非顶点
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">⛽</div>
+                    <div class="summary-text">
+                        <strong>通胀暗流涌动</strong>
+                        美国PPI超预期至6%，油价中枢抬升，利率政策面临方向抉择
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 1: Trump Visit -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">特朗普访华：从"互亮肌肉"到"互递橄榄枝"</h3>
+                <span class="section-tag">中美关系</span>
+            </div>
+            <div class="content">
+                <p>特朗普此次携"企业家天团"入住北京四季酒店，规格颇高。值得注意的是，双方高层并未直接在华磋商，而是选择在<strong>韩国</strong>由何立峰与贝森特先行会谈——外交博弈中"谁也不愿先上门"的微妙平衡尽显无遗。目前官方口径为"有建设性"，即<strong>已达成部分实质成果</strong>。</p>
+                
+                <div class="quote-block">
+                    <p>"最着急的是黄仁勋，你说再不卖，以后人家真不买了。现在我们有优势，你现在再不卖，以后人家真不买了，就是国产的了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>核心预判：</strong>芯片对华出口管制实质性松动 + 中国新能源车对美出口限制放宽。中美双方均在关税与科技管制上"找台阶下"， Trump政府已开始"关税退钱"，中方则以扩大采购（飞机等）作为交换。</p>
+                </div>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 受益方向</h4>
+                        <ul>
+                            <li>出海龙头（新三样：光伏、储能、新能源车）</li>
+                            <li>高端制造出口链</li>
+                            <li>航空采购相关产业链</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 承压方向</h4>
+                        <ul>
+                            <li>国产替代芯片（短期冲击，长期需正面刚）</li>
+                            <li>纯粹依赖政策庇护的"温室公司"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 2: Fed Policy -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">沃什就任美联储主席："不扩表，但不拒降息"</h3>
+                <span class="section-tag">美联储</span>
+            </div>
+            <div class="content">
+                <p>沃什（Warsh）正式执掌美联储，政策框架清晰：<strong>在通胀未获有效控制前，不贸然扩表（QE）</strong>，但并未将降息之门焊死。这意味着传统经济部门仍有望受益于融资成本下行，而金融市场对"无限流动性"的幻想需适度收敛。</p>
+                
+                <div class="highlight-box alert">
+                    <p><strong>关键数据：</strong>美国最新PPI同比增长约<strong>6%</strong>，显著超预期。对比中国PPI已在3-4月回正（年初预期为三季度），美伊冲突带来的能源价格中枢上移正在向全产业链传导，美联储后续利率路径面临<strong>方向性抉择</strong>。</p>
+                </div>
+                
+                <p>油价逻辑已发生结构性变化：即便美伊冲突结束，原油亦<strong>难以回到60美元中枢</strong>，将在更高台阶企稳。中下游化工、中端制造业成本抬升是确定性事件，需密切跟踪其对美通胀的<strong>持续性与强度</strong>。</p>
+            </div>
+        </section>
+        
+        <!-- Section 3: ChiNext -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">创业板历史新高：估值分位51%，远非终点</h3>
+                <span class="section-tag">A股策略</span>
+            </div>
+            <div class="content">
+                <p>创业板创<strong>历史新高</strong>（非十年新高），市场情绪再度沸腾。但与2015年顶点时135倍PE相比，当前仅约<strong>48倍PE</strong>，估值历史分位数仅<strong>51%</strong>——意味着只比历史上半数时间贵。</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指数</th>
+                            <th>估值历史分位</th>
+                            <th>状态评估</th>
+                            <th>策略含义</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>创业板指</td>
+                            <td class="highlight">51%</td>
+                            <td class="trend-up">相对低位</td>
+                            <td>中长期仍有空间，可规律性兑现利润</td>
+                        </tr>
+                        <tr>
+                            <td>科创50</td>
+                            <td class="trend-up">95%+</td>
+                            <td class="trend-up">高位运行</td>
+                            <td>需警惕短期波动，但不轻易言顶</td>
+                        </tr>
+                        <tr>
+                            <td>标普500</td>
+                            <td class="trend-up">92-93%</td>
+                            <td class="trend-up">历史极贵</td>
+                            <td>一般牛市或已见顶，科技革命牛市仍可延续</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="quote-block">
+                    <p>"伟大牛市的终点，一定会到历史分位数的99%——就是比99%的时候都贵。要不怎么叫伟大的泡沫？"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+                
+                <div class="highlight-box success">
+                    <p><strong>操作纪律：</strong>创业板中长期基本面支撑坚实（宁德时代等龙头盈利大幅改善），当前绝非行情顶点。但短期涨幅过大后，<strong>规律性兑现利润、利润不返场</strong>是保存牛市成果的不二法门。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Mindset -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">心态课：延迟满足 vs 每日收租心态</h3>
+                <span class="section-tag">投资者教育</span>
+            </div>
+            <div class="content">
+                <p>市场创新高，两类极端心态重现：<strong>"要不要全卖了"</strong>与<strong>"是不是要满仓干"</strong>。核心提示如下：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>❌ 致命心态</h4>
+                        <ul>
+                            <li>每日目标赚500元 → 最终每日倒贴</li>
+                            <li>跌两天就问"还算不算数"</li>
+                            <li>进一忧退一忧，涨跌皆恐慌</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>✅ 正确姿势</h4>
+                        <ul>
+                            <li>建立操作策略，调整心态适配市场</li>
+                            <li>牛市犯错不被惩罚，熊市犯错狠狠惩罚</li>
+                            <li>大钱来自延迟满足，非日结工资</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>忠言：</strong>所有观点基于中长期基本面，非昨日涨跌。若心态无法调整，投资并非必选项——<strong>"不投资，钱也还在；花了总比亏了强。"</strong></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

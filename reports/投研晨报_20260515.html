@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月15日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(192,57,43,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .executive-summary h2::before {
+            content: "◆";
+            font-size: 10px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+        
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+        
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        
+        .content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        
+        .highlight-box.alert {
+            border-left-color: var(--red);
+        }
+        
+        .highlight-box.success {
+            border-left-color: var(--green);
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+        
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+        
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: """;
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+        
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table .trend-up {
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        .data-table .trend-down {
+            color: var(--red);
+            font-weight: 600;
+        }
+        
+        .data-table .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 20px;
+            }
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">宏观策略 · 国际关系 · 产业研判</p>
+            <p class="header-date">2026年5月15日 · 星期五 · 音频纪要整理</p>
+        </header>
+        
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">🤝</div>
+                    <div class="summary-text">
+                        <strong>中美建设性战略稳定关系</strong>
+                        四大原则确立：合作为主的积极稳定、竞争有度的良性稳定、分歧可控的常态稳定、和平共处的持久稳定
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🏛️</div>
+                    <div class="summary-text">
+                        <strong>高规格接待</strong>
+                        中小学生机场迎接、天坛游览等顶配安排，特朗普携历史最强企业家天团访华
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>实质成果落地</strong>
+                        暂停对等关税、取消芬太尼、稀土松绑、半导体合规放松、英伟达H200获批
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🌍</div>
+                    <div class="summary-text">
+                        <strong>全球格局重塑</strong>
+                        普京、巴基斯坦即将访华，中美共识向俄伊巴传递，世界秩序进入新平衡
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">"四个稳定"：中美新范式的外交定盘星</h3>
+                <span class="section-tag">战略框架</span>
+            </div>
+            <div class="content">
+                <p>本次会谈的核心成果并非具体协议，而是确立了<strong>"中美建设性战略稳定关系"</strong>这一全新框架。与冷战时期"不合作但至少别打"的消极稳定不同，此次框架强调"积极稳定"——即在承认分歧的前提下，以合作为主基调，构建竞争有度、分歧可控、和平共处的新型大国关系。</p>
+                
+                <div class="highlight-box">
+                    <p><strong>四大原则：</strong>①合作为主的积极稳定 ②竞争有度的良性稳定 ③分歧可控的常态稳定 ④和平共处的持久稳定。这意味着中美双方认可：除了热战之外，贸易战、科技胁迫、霸凌式遏制已属<strong>效率极低的政策选择</strong>。</p>
+                </div>
+                
+                <p>这一判断的战略意义重大。老大与老二竞争的历史规律表明，当老大形成"非热战手段无法遏制老二"的判断后，双方更有可能在新的力量对比下达成新的平衡。2026年注定被历史记住——不是因某份协议，而是因<strong>美国人对遏制中国有效性的怀疑开始动摇</strong>。</p>
+                
+                <div class="quote-block">
+                    <p>"江湖不是打打杀杀，江湖是人情世故。我们也要给人面子，人也给我们个面子，差不多就这个意思。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">谈判成果拆解：关税、稀土、芯片与大豆</h3>
+                <span class="section-tag">实质成果</span>
+            </div>
+            <div class="content">
+                <p>根据非官方报道，本次会谈在多个务实领域取得突破：</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>领域</th>
+                            <th>成果内容</th>
+                            <th>确定性</th>
+                            <th>战略含义</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>关税</td>
+                            <td>继续暂停对等关税</td>
+                            <td class="trend-up">高</td>
+                            <td>贸易战实质性降温</td>
+                        </tr>
+                        <tr>
+                            <td>芬太尼</td>
+                            <td>取消相关制裁措施</td>
+                            <td class="trend-up">板上钉钉</td>
+                            <td>美方已开始"退钱"</td>
+                        </tr>
+                        <tr>
+                            <td>稀土</td>
+                            <td>中国放松关键材料出口限制</td>
+                            <td class="trend-up">高</td>
+                            <td>缓解全球供应链压力</td>
+                        </tr>
+                        <tr>
+                            <td>半导体</td>
+                            <td>美方放松合规审查与制裁</td>
+                            <td class="highlight">中等</td>
+                            <td>该给的给，该拿的拿</td>
+                        </tr>
+                        <tr>
+                            <td>农产品</td>
+                            <td>中国采购美国大豆、牛肉</td>
+                            <td class="trend-up">高</td>
+                            <td>缓解特朗普国内农场主压力</td>
+                        </tr>
+                        <tr>
+                            <td>TikTok</td>
+                            <td>运营方式初步意向</td>
+                            <td class="trend-down">低</td>
+                            <td>长期问题，不可预期过高</td>
+                        </tr>
+                        <tr>
+                            <td>机制</td>
+                            <td>建立长效双边贸易磋商机制</td>
+                            <td class="trend-up">高</td>
+                            <td>分歧解决通道制度化</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box alert">
+                    <p><strong>重要提醒：</strong>不能预期所有问题一次性解决。部分方向仍有分歧，但双方将建立<strong>分歧解决机制</strong>，避免冲突升级。这是从"零和博弈"到"管控竞争"的关键转变。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">英伟达H200获批：黄仁勋的"迂回入局"</h3>
+                <span class="section-tag">科技博弈</span>
+            </div>
+            <div class="content">
+                <p>本次会谈中最具产业信号意义的事件：<strong>英伟达H200芯片获批向10家中国公司供货</strong>，包括阿里、字节跳动、腾讯、富士康、联想等GPU用量大户。</p>
+                
+                <div class="quote-block">
+                    <p>"黄仁勋是典型的鸽派，他是主张跟中国搞好关系的人，想卖东西给中国。特朗普这次带队以鹰派为主，上来就把黄仁勋纳入其中，看上去有点鸽派。他采用了一种迂回的方式——一开始说没带，最后假戏真唱，最后时刻把黄仁勋带上。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+                
+                <p>这一事件的深层逻辑：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 产业信号</h4>
+                        <ul>
+                            <li>美国第一大市值公司（英伟达）利益获保障</li>
+                            <li>芯片从"全面封锁"转向"精准管控"</li>
+                            <li>中国AI产业链获得关键算力补给</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 博弈艺术</h4>
+                        <ul>
+                            <li>黄仁勋先"被排除"再"被纳入"，戏剧化处理</li>
+                            <li>鹰派为主的天团中嵌入鸽派代表</li>
+                            <li>向国内传递"强硬但务实"的形象</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box success">
+                    <p><strong>投研判断：</strong>H200获批标志着中美科技战从"无差别打击"进入"精准管控+选择性放行"的新阶段。英伟达作为美国市值第一的公司，其商业利益与对华政策开始<strong>重新校准</strong>。长期看，完全脱钩已无可能，"该给的给，该拿的拿"是务实选择。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">全球格局外溢：普京与巴基斯坦相继访华</h3>
+                <span class="section-tag">地缘推演</span>
+            </div>
+            <div class="content">
+                <p>中美会谈结束后，全球地缘格局迅速产生连锁反应：<strong>普京宣布即将访华，巴基斯坦也将派团来华</strong>。这并非巧合，而是"老大老二谈完，精神要向各方传递"的经典外交节奏。</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🇷🇺 俄罗斯方向</h4>
+                        <ul>
+                            <li>普京需了解中美共识边界</li>
+                            <li>俄乌冲突后续安排需大国协调</li>
+                            <li>中俄关系在"不结盟"框架下深化</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🇵🇰 巴基斯坦/伊朗方向</h4>
+                        <ul>
+                            <li>中巴经济走廊战略升级</li>
+                            <li>伊朗问题后续安排需通过巴方传递</li>
+                            <li>中东格局随中美关系重塑</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>战略推演：</strong>中美达成"建设性战略稳定"后，全球各力量中心将重新校准自身立场。中俄关系、中欧关系、中国与中东/东南亚关系均将进入<strong>再平衡窗口期</strong>。世界秩序的底层逻辑正从"选边站"转向"多极共处"。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">市场启示：从"不确定性折价"到"确定性溢价"</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>本次会谈对资本市场的核心影响在于<strong>风险偏好的系统性提升</strong>。过去几年压制中国资产的"中美脱钩"尾部风险显著下降，市场将从"不确定性折价"向"确定性溢价"切换。</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 受益方向</h4>
+                        <ul>
+                            <li>出海产业链（新三样、高端制造）</li>
+                            <li>互联网平台（TikTok预期缓和）</li>
+                            <li>半导体设备与GPU算力链</li>
+                            <li>中美贸易依存度高的传统出口</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 边际弱化</h4>
+                        <ul>
+                            <li>纯国产替代概念（逻辑从"被迫"转"自愿"）</li>
+                            <li>军工避险属性（地缘风险降温）</li>
+                            <li>黄金等避险资产（需重新定价）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box success">
+                    <p><strong>操作提示：</strong>短期市场情绪高涨，但需警惕"利好出尽"后的回调。中长期看，中美关系进入"管控竞争"新常态，对风险资产的压制因素系统性减弱。建议关注<strong>估值仍在低位、且直接受益于中美关系缓和</strong>的板块，避免追高情绪过热品种。</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月13日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">大宗商品配置调整 · 铜锂新高 · 原油兑现完毕</p>
+            <p class="header-date">2026年5月13日 · 周三 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">📈</div>
+                    <div class="summary-text">
+                        <strong>铜创历史新高</strong>
+                        LME铜涨破14,000美元，算力中心建设驱动需求大幅增长，慢牛格局未改
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">⚡</div>
+                    <div class="summary-text">
+                        <strong>碳酸锂翻倍</strong>
+                        从10万涨到20万，利润可对线但保留底仓，整体趋势未结束但上涨空间压缩
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🔄</div>
+                    <div class="summary-text">
+                        <strong>原油清仓转向</strong>
+                        原油基本兑现完毕，商品整体配置比例降回10%，内部转向铜+多晶硅
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">⚠️</div>
+                    <div class="summary-text">
+                        <strong>纪律警示</strong>
+                        宁可错过也别做错，科技短期勿冲，多晶硅左侧回调是加配机会
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">大宗商品全景：铜锂新高，分化加剧</h3>
+                <span class="section-tag">宏观数据</span>
+            </div>
+            <div class="content">
+                <p>近期大宗商品市场呈现明显分化，主讲人系统梳理了五大品种的最新状态。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>品种</th>
+                            <th>当前状态</th>
+                            <th>策略方向</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">铜</td>
+                            <td class="trend-up">LME涨破14,000美元，创历史新高</td>
+                            <td class="trend-up">中长期基本盘，慢牛格局</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">碳酸锂</td>
+                            <td class="trend-up">从10万→20万，已翻倍</td>
+                            <td>利润可对线，保留底仓</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">多晶硅</td>
+                            <td class="trend-down">唯一未见基本面拐点</td>
+                            <td class="trend-up">左侧布局，回调加配</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">原油</td>
+                            <td class="trend-down">战争结束，已涨一波</td>
+                            <td class="trend-down">基本清仓，兑现完毕</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">黄金</td>
+                            <td>进入利润兑现下半场</td>
+                            <td class="trend-down">低配，降息尾声继续减</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box alert">
+                    <p><strong>核心判断：</strong>铜和碳酸锂已创历史新高或翻倍，多晶硅仍在左侧等待拐点，原油和黄金进入兑现阶段。大宗商品内部配置需要动态调整，不能一成不变。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">配置节奏复盘：从年初到现在</h3>
+                <span class="section-tag">策略</span>
+            </div>
+            <div class="content">
+                <p>主讲人以"去年年底明确提示→现在逐一兑现"的时间线，梳理了完整的配置节奏。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>操作</th>
+                            <th>结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">去年底/今年初</td>
+                            <td>减黄金，加原油；增工业金属</td>
+                            <td class="trend-up">方向正确</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">美伊战争期间</td>
+                            <td>原油大幅兑现利润一轮</td>
+                            <td class="trend-up">大赚</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">战争结束后</td>
+                            <td>原油再兑现一轮，增配铜+多晶硅</td>
+                            <td class="trend-up">切换成功</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">现在</td>
+                            <td>原油基本清零，商品比例降回10%</td>
+                            <td>内部调结构</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>当前大宗商品内部配置状态：</strong></p>
+                    <p style="margin-top:8px">贵金属（黄金）：<strong>低配</strong>——利润兑现阶段。原油：<strong>基本为零</strong>——已兑现完毕。铜：<strong>基本盘配置</strong>——中长期慢牛。多晶硅：<strong>逐渐增加比例</strong>——左侧，回调是加配机会。碳酸锂：<strong>利润可对线</strong>，但保留底仓——上涨未结束，空间压缩。</p>
+                </div>
+
+                <p>大宗商品整体配置比例：从原来的 <strong>10% 提升至 15-20%</strong>，现在因原油兑现<strong>降回 10%</strong>。内部结构：原油大比例降低（现在基本没有了），分布在<strong>铜和多晶硅</strong>上。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">品种策略详解</h3>
+                <span class="section-tag">产业</span>
+            </div>
+            <div class="content">
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 铜：中长线基本盘</h4>
+                        <ul>
+                            <li>慢牛格局没有改变</li>
+                            <li>算力中心建设需求大幅增长</li>
+                            <li>新基建用铜量持续上升</li>
+                            <li>保持底仓，不需频繁操作</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 碳酸锂：利润兑现，留底仓</h4>
+                        <ul>
+                            <li>10万→20万，利润可对线</li>
+                            <li>保留基本配置</li>
+                            <li>上涨趋势未结束</li>
+                            <li>空间压缩，不宜重仓追高</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 多晶硅：左侧布局</h4>
+                        <ul>
+                            <li>唯一未见基本面拐点</li>
+                            <li>前期波动，表现落后</li>
+                            <li>3万附近是中长底部</li>
+                            <li>回调就是加配机会</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 黄金：下半场兑现</h4>
+                        <ul>
+                            <li>进入利润兑现下半场</li>
+                            <li>美联储降息尾声大幅减配</li>
+                            <li>之前已主动兑现很多</li>
+                            <li>当前保持低配</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">纪律警示：不要追高，不要死磕</h3>
+                <span class="section-tag">风险</span>
+            </div>
+            <div class="content">
+                <div class="quote-block">
+                    <p>"你选了那个已经开始涨了的，比如说碳酸锂涨一倍了，你之前没赚到钱现在去跟他死磕，你就挂在山顶了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 追高型</h4>
+                        <ul>
+                            <li>四个方向提示了，只选那个已经开始涨的</li>
+                            <li>结果挂在山顶</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 补涨型</h4>
+                        <ul>
+                            <li>之前不信，现在找一个没涨的买</li>
+                            <li>之前不信的时候不涨，买了就一定涨？</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 焦虑型</h4>
+                        <ul>
+                            <li>因为谨慎错过行情→焦虑</li>
+                            <li>被迫上车→挂在树上→更加焦虑</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 正确做法</h4>
+                        <ul>
+                            <li>在大节点做提示和调仓</li>
+                            <li>动态调整，不是频繁操作</li>
+                            <li>宁可错过也别做错</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"宁可错过也别做错。既然五千点韩国你都不敢下手，现在八千点你就小心一点。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">海外科技与特朗普访华</h3>
+                <span class="section-tag">宏观</span>
+            </div>
+            <div class="content">
+                <p>A股科技+海外纯科技行情已经到了<strong>极端化状态</strong>。之前几个月没信的就不要再信了——<strong>短期不要再往里面冲</strong>。中长期仍然需要配置，但短期可能面临回调（类比光模块）。</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>科技警示：</strong>科技板块极端化，短期不要再冲。中长期你仍然需要有这一类的东西，但短期冲你可能短期是一个高点。就像光模块一样，短期冲完就挂在树上了。</p>
+                </div>
+
+                <p>特朗普5月14-15日可能访华。主讲人判断：两个国家的外交就是<strong>实力的比拼</strong>，看他有没有筹码跟你博弈——<strong>现在特朗普手上没什么筹码</strong>。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">科技卡脖子</td>
+                            <td>卡不住了，中国GPU已接近世界先进水平</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">贸易战</td>
+                            <td>自己大本营出现摇摆，国会裁定关税违法</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">核心结论</td>
+                            <td class="trend-up">"凡事发生必有利于我"——坚定信心</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>海外配置纪律：</strong>海外配置一定要有，不要判断高低。比如想配300万海外，先配100万底仓，其他再看。不要像三年前看空美股觉得贵，一直等回调，结果错过大行情。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

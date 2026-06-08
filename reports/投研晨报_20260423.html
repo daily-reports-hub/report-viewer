@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月23日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">公募基金一季报解读 · 三层逆向框架</p>
+            <p class="header-date">2026年4月23日 · 周四 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>光通信霸榜增持榜</strong>
+                        亨通光电被增持131亿、长飞光纤超100亿，光的炒作已从光模块向光纤光缆延伸
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">⚠️</div>
+                    <div class="summary-text">
+                        <strong>警惕共识过高风险</strong>
+                        寒武纪、光相关板块短期共识过热，全市场都在讲同一个故事时要格外小心
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🔄</div>
+                    <div class="summary-text">
+                        <strong>中期布局共识极低</strong>
+                        消费板块配置降至历史相对低位且维持数年，酝酿逆境反转机会
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">🧠</div>
+                    <div class="summary-text">
+                        <strong>公募不是投资圣经</strong>
+                        公募基金作为一个整体水平与散户差不多，追涨杀跌是常态，季报只是温度计
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">数据全景：主动权益型基金一季报画像</h3>
+                <span class="section-tag">机构持仓</span>
+            </div>
+            <div class="content">
+                <p>一季度主动权益型基金披露完毕，科技仍是配置核心，但资金流向已出现明显分化：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>前十大重仓</th>
+                            <th>所属方向</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">中际旭创</td>
+                            <td>光模块龙头</td>
+                            <td class="trend-up">连续两年蝉联公募第一大重仓</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">宁德时代</td>
+                            <td>锂电龙头</td>
+                            <td>持续获增持</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">新易盛</td>
+                            <td>光模块</td>
+                            <td>光通信核心标的</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">腾讯控股</td>
+                            <td>平台经济</td>
+                            <td class="trend-down">遭超百亿减持</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">贵州茅台</td>
+                            <td>白酒</td>
+                            <td>老灯代表，仍在前十</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">寒武纪</td>
+                            <td>AI芯片</td>
+                            <td class="trend-down">遭超百亿减持</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">药明康德</td>
+                            <td>CXO龙头</td>
+                            <td>医药代表</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">阿里巴巴</td>
+                            <td>平台经济</td>
+                            <td class="trend-down">遭超百亿减持</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>资金流向清晰：</strong>整体增持光通信产业链，减持平台经济和偏老资产（紫金矿业也遭减持超百亿）。科技仍是核心，但内部结构在切换。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">第一层：不要抄作业——公募整体没有前瞻性</h3>
+                <span class="section-tag">方法论</span>
+            </div>
+            <div class="content">
+                <p>很多投资者把公募季报当作"抄作业"的工具，但主讲人给出了明确的否定：</p>
+
+                <div class="quote-block">
+                    <p>"公募基金作为一个整体，它的水平跟散户是差不多的，也是追涨杀跌。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 公募的局限</h4>
+                        <ul>
+                            <li>季报/年报重仓变化只体现偏好，无前瞻性</li>
+                            <li>大部分基金经理属于跟风抱团型</li>
+                            <li>指望看着公募重仓操作获得好收益，没那么简单</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 长期参考价值</h4>
+                        <ul>
+                            <li>重仓公司基本是行业龙头，基本面质地较好</li>
+                            <li>业绩暴雷概率低，可作为优秀公司池参考</li>
+                            <li>但优秀不代表马上要买，涨三倍也要等位置</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>典型案例：</strong>葛兰也开始配寒武纪了；之前买消费茅台信心特别强的基金经理，都开始减配茅台去配寒武纪——这其实是公募群体追涨的缩影。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">第二层：短期逆向——警惕共识过高</h3>
+                <span class="section-tag">风险警示</span>
+            </div>
+            <div class="content">
+                <p>当所有人都在讲同一个板块的好，短期共识集中度达到极致时，恰恰是最该小心的时候。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>共识过高板块</th>
+                            <th>当前状态</th>
+                            <th>风险提示</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">寒武纪</td>
+                            <td>全市场一致看好</td>
+                            <td class="trend-down">短中期共识过高，风险大于机会</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">光通信/光模块</td>
+                            <td>炒作向光纤光缆延伸</td>
+                            <td class="trend-down">亨通、长飞被大幅增持后追高性价比不高</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">光相关产业链</td>
+                            <td>从光模块→光纤→PCB/光器件</td>
+                            <td class="trend-down">板块情绪过热，宜观望而非追高</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>历史对照：</strong>去年市场最低迷、贸易冲突最厉害时，主讲人提示寒武纪是业绩最确定的方向；<strong>现在</strong>全市场都在讲寒武纪多好——时间点不同，结论完全不同。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">第三层：中期逆向——布局共识极低的板块</h3>
+                <span class="section-tag">机会挖掘</span>
+            </div>
+            <div class="content">
+                <p>公募季报的第二个实战价值在于发现<strong>共识极低的板块</strong>——历史规律表明，这些板块往往孕育着逆境反转的机会。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🟡 历史规律</h4>
+                        <ul>
+                            <li>公募对某一板块配置降至历史最低位</li>
+                            <li>且维持了一段时间</li>
+                            <li>该板块往往出现反转性机会</li>
+                            <li>极端的非共识交易孕育超额收益</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 当前观察</h4>
+                        <ul>
+                            <li>消费板块配置比例降至历史相对低位</li>
+                            <li>低迷状态已延续数年</li>
+                            <li>是否酝酿反转？值得中长线配置者深思</li>
+                            <li>左侧布局需控制仓位、做好时间成本准备</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"被极端减持、极端低配的板块，包括消费，在新一轮周期中可能有机会。短期被共识追逐的方向表现机会并不大，但极端低估的板块值得中长线关注。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">策略建议：把公募当作温度计，而不是圣经</h3>
+                <span class="section-tag">实战启示</span>
+            </div>
+            <div class="content">
+                <p>综合三层解读框架，主讲人给出了清晰的实战操作建议：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 短期回避</h4>
+                        <ul>
+                            <li>公募一季度大幅增持的光通信链</li>
+                            <li>寒武纪等共识过高的AI芯片标的</li>
+                            <li>继续追涨的性价比不高</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 中期关注</h4>
+                        <ul>
+                            <li>被公募极端减持的消费板块</li>
+                            <li>配置比例处于历史低位的方向</li>
+                            <li>半年到一年维度逆境反转概率较高</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>心态校准：</strong>把公募当作市场情绪的温度计，而不是投资圣经——<strong>它热的地方你要冷静，它冷的地方你要研究。</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

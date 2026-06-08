@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月27日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">生猪养殖产能去化加速 · 龙头带头减产</p>
+            <p class="header-date">2026年4月27日 · 周一 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon red">🐷</div>
+                    <div class="summary-text">
+                        <strong>猪肉比青菜还便宜</strong>
+                        猪价跌破5元/斤，龙头每头猪亏四五百元，行业陷入深度亏损的非正常状态
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🏭</div>
+                    <div class="summary-text">
+                        <strong>三大龙头带头减产</strong>
+                        牧原停建124个猪场、温氏关停7家低效场、新希望下调出栏量，实质性压减产能
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">📊</div>
+                    <div class="summary-text">
+                        <strong>三四季度供需紧平衡</strong>
+                        能繁母猪目标3650万头，当前3904万头，月均去化50-60万，Q3-Q4达到目标
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">💰</div>
+                    <div class="summary-text">
+                        <strong>业绩拐点渐行渐近</strong>
+                        自去年7月连续9个月下降，二至三季度龙头猪企有望确认利润修复拐点
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">宏观脱敏：关税战反复不影响全球新高</h3>
+                <span class="section-tag">全球宏观</span>
+            </div>
+            <div class="content">
+                <p>五一前最后一周，关税/贸易谈判仍有反复，但<strong>金融市场已明显脱敏</strong>。日本、韩国、美国股市纷纷创出历史新高——市场对地缘扰动的消化能力远超预期。</p>
+
+                <div class="highlight-box">
+                    <p><strong>核心启示：</strong>当市场"想明白"或"想充分"之后，事件本身对行情的影响就会钝化甚至消失。<strong>短期噪音不必过度反应，核心精力应放在产业基本面的结构性变化上。</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">价格信号：猪肉跌破成本线的极端时刻</h3>
+                <span class="section-tag">周期研判</span>
+            </div>
+            <div class="content">
+                <p>主讲人以"大胆假设、小心求证"的行业研究方法论，对生猪养殖行业的极端信号进行了系统梳理：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>当前状态</th>
+                            <th>与景气高点对比</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">猪肉价格</td>
+                            <td class="trend-down">跌破5元/斤</td>
+                            <td>比青菜还便宜，比猪饲料还便宜</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">龙头每头猪盈亏</td>
+                            <td class="trend-down">亏损约400-500元</td>
+                            <td class="trend-up">景气时一头猪赚3000-4000元</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">行业状态</td>
+                            <td class="trend-down">深度亏损、非正常</td>
+                            <td>养殖的都亏疯了</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="quote-block">
+                    <p>"猪价比青菜还便宜，猪价连猪饲料都便宜了，养猪的都亏疯了。但当你看到这种极端信号时，应该打起精神——机会可能要来了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>研究纪律：</strong>看到猪肉价格破5块，不能简单判断"猪肉要涨"或"猪的公司要涨"——这是缺乏依据的。正确做法是<strong>根据信号打起精神，跟踪验证产能去化的实际进展。</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">龙头行动：三大巨头实质性压减产能</h3>
+                <span class="section-tag">产业跟踪</span>
+            </div>
+            <div class="content">
+                <p>随着猪价持续低迷，牧原、温氏、新希望三大龙头从亏损到主动收缩产能，标志性信号明确：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>企业</th>
+                            <th>核心动作</th>
+                            <th>影响规模</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">牧原股份</td>
+                            <td>能繁母猪主动调减至312万头</td>
+                            <td class="trend-up">较年初减近50万头；停建124个猪场，压缩新增产能1200万头；出栏体重降至117公斤</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">温氏股份</td>
+                            <td>关停低效猪场+终止募投项目</td>
+                            <td class="trend-up">关停7家低效场，终止15个募投项目（9个生猪项目）；推出500万头烤乳猪模式</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">新希望</td>
+                            <td>跟随式收缩产能</td>
+                            <td class="trend-up">能繁母猪降至74万头；明确2026年下调生猪出栏量</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>标杆意义：</strong>牧原作为行业龙头率先做出标杆式收缩，起到了<strong>"反内卷"的示范效应</strong>。龙头带头减产，有利于全行业达成限产保价的共识。</p>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🟡 囚徒困境</h4>
+                        <ul>
+                            <li>如果牧原降、温氏不降</li>
+                            <li>温氏将坐享涨价红利</li>
+                            <li>需行业协会协调+监管引导</li>
+                            <li>有效市场 + 有为政府</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 龙头效应</h4>
+                        <ul>
+                            <li>牧原率先减产起表率作用</li>
+                            <li>温氏、新希望同步跟进</li>
+                            <li>行业去产能共识加速形成</li>
+                            <li>政策底与产业底共振</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">供需推演：从过剩到紧平衡的时间表</h3>
+                <span class="section-tag">数据验证</span>
+            </div>
+            <div class="content">
+                <p>全国能繁母猪去化路径已清晰可见，关键数据如下：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>数值</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">2026Q1 能繁母猪存栏</td>
+                            <td>3904万头</td>
+                            <td>当前水平</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">行业调控目标</td>
+                            <td>3650万头</td>
+                            <td>供需平衡/紧平衡的关键节点</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">剩余去化空间</td>
+                            <td class="trend-up">约254万头</td>
+                            <td>3904万 → 3650万</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">月均去化速度</td>
+                            <td class="trend-up">50-60万头</td>
+                            <td>按此节奏，三四季度达到目标</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">连续下降月数</td>
+                            <td class="trend-up">9个月</td>
+                            <td>自去年7月以来持续去化</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box alert">
+                    <p><strong>被忽视的效率陷阱：</strong>供给迟迟下不来有两个原因：一是能繁母猪数量下降慢；二是<strong>PSY（每头母猪年产仔猪数）大幅提升</strong>——同样一头能繁母猪比十年前多生0.7-0.8头，技术进步变相增加了供给。</p>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>时间表判断：</strong>按当前月均去化50-60万头的节奏，<strong>今年三四季度</strong>能繁母猪存栏将达到3650万头目标水平。届时市场供给将从<strong>过剩 → 平衡 → 紧平衡</strong>（略有一点不足），猪肉价格进一步下跌的可能性不大。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">投资策略：左侧布局，静待拐点确认</h3>
+                <span class="section-tag">操作纪律</span>
+            </div>
+            <div class="content">
+                <p>综合以上分析，主讲人对生猪养殖板块给出了明确的投资策略：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 积极因素</h4>
+                        <ul>
+                            <li>自去年7月以来连续9个月去化</li>
+                            <li>龙头企业去化节奏明显加快</li>
+                            <li>国家层面释放稳价格信号</li>
+                            <li>二至三季度有望确认业绩拐点</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 观察要点</h4>
+                        <ul>
+                            <li>近期生猪价格已出现一定程度上涨</li>
+                            <li>关键是观察上涨势头能否持续</li>
+                            <li>若持续，业绩拐点确认概率大增</li>
+                            <li>左侧布局需控制仓位、有耐心</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"行业研究就是大胆假设、小心求证。看到猪价破5块不是直接下注的理由，而是打起精神跟踪产能去化的信号。当龙头开始带头减产，政策开始稳价格，供需拐点就不远了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

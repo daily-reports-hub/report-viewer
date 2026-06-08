@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月28日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">美伊缓和 · 芯片龙头空中加油 · 工业利润高增</p>
+            <p class="header-date">2026年4月28日 · 周二 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon blue">🌍</div>
+                    <div class="summary-text">
+                        <strong>美伊阶段性缓和可期</strong>
+                        伊朗主动提方案给美国台阶下，特朗普内部讨论回应，市场已脱敏——美日韩均创历史新高
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">⚡</div>
+                    <div class="summary-text">
+                        <strong>英伟达美光空中加油</strong>
+                        Agent时代算力需求上修，英伟达涨4%市值5.26万亿超港股，动态PE仍合理
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">📈</div>
+                    <div class="summary-text">
+                        <strong>韩国指数涨50%</strong>
+                        从5000点到6666点，第二个红包兑现。明确提示的机会才行动，不要All In不要臆想
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🚗</div>
+                    <div class="summary-text">
+                        <strong>工业利润逐月加速</strong>
+                        Q1规上工业企业利润同比+15.5%，新能源车复制日本出海路径但起点更高
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">美伊局势：阶段性缓和可期</h3>
+                <span class="section-tag">地缘政治</span>
+            </div>
+            <div class="content">
+                <p>伊朗主动提出方案，虽偏重自身利益，但给了美国台阶下，释放出愿意继续谈判的信号：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>阶段</th>
+                            <th>内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">第一步</td>
+                            <td>先停战，包括在黎巴嫩的打击也要停止</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">第二步</td>
+                            <td>解除海上封锁，建立霍尔木兹海峡共同管理机制</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">第三步</td>
+                            <td>秩序恢复、战争停战状态下，谈核问题解决方案</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>特朗普也在内部讨论回应方案，若进展顺利，<strong>阶段性告一段落是有可能的</strong>。但主讲人强调一个更重要的判断：</p>
+
+                <div class="highlight-box">
+                    <p><strong>市场已脱敏：</strong>不管美伊进展如何，美股、日本、韩国都已创出历史新高——地缘噪音对市场的压制已显著钝化。当市场"想明白"或"想充分"之后，事件本身对行情的影响就会消失。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">美股芯片龙头：Agent时代点燃算力"空中加油"</h3>
+                <span class="section-tag">算力产业链</span>
+            </div>
+            <div class="content">
+                <p>纳斯达克接近25000点创历史新高，英伟达涨4%，美光涨5.6%。主讲人将本轮上涨定义为<strong>"空中加油"</strong>——不是泡沫冲顶，而是基本面预期上台阶后的合理重估。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>数据</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">纳斯达克</td>
+                            <td class="trend-up">~25,000点</td>
+                            <td>历史新高</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">英伟达</td>
+                            <td class="trend-up">+4%</td>
+                            <td>市值5.26万亿美元（约35万亿人民币），超港股总市值</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">美光</td>
+                            <td class="trend-up">+5.6%</td>
+                            <td>存储芯片龙头，受益AI算力扩张</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">动态估值</td>
+                            <td class="trend-up">仍然合理</td>
+                            <td>股价虽大涨，但按动态PE看不算贵</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>核心驱动力：Agent时代算力需求上修。</strong>原来用户向AI问一个问题，算力消耗是"一般级别"。进入智能体时代后，AI主动规划、多步推理、调用工具——对Token的消耗非常快、非常大。这意味着在原有AI算力需求的基础上，<strong>进一步上修</strong>了增长预期。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">资产配置纪律：动态捕捉"年度红包"</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>主讲人此前明确提示的两个"红包"已逐步兑现：原油高位兑现利润 → 用利润增持韩国。韩国指数从约5,000点涨至约<strong>6,666点</strong>，从低点上涨约<strong>50%</strong>。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 已兑现的红包</h4>
+                        <ul>
+                            <li>原油：左侧布局→100多美金高位兑现利润</li>
+                            <li>韩国：用原油利润增持，5000→6666点</li>
+                            <li>每年大类资产中都会出现类似机会</li>
+                            <li>要在配置中动态调整、主动捕捉</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 重要纪律</h4>
+                        <ul>
+                            <li>不要All In单一方向</li>
+                            <li>不要臆想机会、自己脑补</li>
+                            <li>明确提示的机会才值得行动</li>
+                            <li>其他点评≠推荐，≠现在就要买</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>反例警示：</strong>工程机械基本面有好的变化，但不意味着板块现在一定有机会。还要结合<strong>估值、未来可持续性、市场风格、政策压盘</strong>等综合判断。不能听说哪个方向好就"奥印"（All In）冲进去。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">国内经济：工业利润高增+新能源车出海</h3>
+                <span class="section-tag">宏观数据</span>
+            </div>
+            <div class="content">
+                <p>一季度全国规模以上工业企业利润数据表现亮眼，且呈逐月加速态势：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>利润同比增速</th>
+                            <th>趋势</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">1-2月累计</td>
+                            <td class="trend-up">+15.2%</td>
+                            <td>开局良好</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">3月单月</td>
+                            <td class="trend-up">+15.8%</td>
+                            <td>逐月加快</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">一季度整体</td>
+                            <td class="trend-up">+15.5%</td>
+                            <td>宏观政策+财政政策靠前发力</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>新能源汽车出海：</strong>中国车企正在复制日本汽车当年的海外扩张路径，但<strong>起点和天花板更高</strong>。客气点说是"中美两强格局"，不客气地说可能是"中国一统江湖"——就像光伏领域中国做到的事情一样。<strong>唯一变数</strong>是其他国家采取自我保护型贸易机制（高关税/准入壁垒）。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

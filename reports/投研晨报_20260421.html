@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月21日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">四部委光伏反内卷落地 · 锂矿龙头一季报爆发 · 周期反转验证</p>
+            <p class="header-date">2026年4月21日 · 周二 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">⚡</div>
+                    <div class="summary-text">
+                        <strong>四部委反内卷组合拳落地</strong>
+                        工信部+发改委+市监总局+能源局联合召开光伏座谈会，跨部门综合性措施将出台
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🔋</div>
+                    <div class="summary-text">
+                        <strong>赣锋锂业一季报暴增</strong>
+                        Q1净利润16-21亿(+540%~690%)，一季度≈去年全年；天齐锂业17-20亿(+1500%)
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">📈</div>
+                    <div class="summary-text">
+                        <strong>多晶硅期货涨停</strong>
+                        从10万涨至16万附近整固，反内卷政策催化下拐点已现，反应弱于算力但符合基本面
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🔄</div>
+                    <div class="summary-text">
+                        <strong>周期反转的本质</strong>
+                        从亏损几十亿到年赚百亿只需几个季度；年底若确认拐点，右侧机会到来
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">四部委联合部署光伏反内卷：从口号到组合拳</h3>
+                <span class="section-tag">政策</span>
+            </div>
+            <div class="content">
+                <p>工信部、国家发改委、市场监管总局、国家能源局<strong>四部委联合召开光伏行业座谈会</strong>，部署光伏产业竞争秩序相关工作，强调治理内卷式竞争的重要性。</p>
+
+                <div class="highlight-box success">
+                    <p><strong>关键变化——跨部门组合拳：</strong>与单纯的口号不同，此次是工信部+发改委+市监总局+能源局等关键部门联合行动。这些部门将出台<strong>综合性措施</strong>，使行业供给与需求重新匹配。今年的反内卷一定会加码。</p>
+                </div>
+
+                <p>在此消息刺激下，<strong>多晶硅期货出现涨停</strong>。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>阶段</th>
+                            <th>价格（元/吨）</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>前期低点</td>
+                            <td class="trend-down">10万</td>
+                            <td>底部</td>
+                        </tr>
+                        <tr>
+                            <td>反弹高点</td>
+                            <td class="trend-up">~18万</td>
+                            <td>最高触及</td>
+                        </tr>
+                        <tr>
+                            <td>当前位置</td>
+                            <td class="highlight">~16万</td>
+                            <td>整固中</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>配置预判：</strong>去年年底提示今年重点金属商品方向——①左侧配置的原油（已完成）；②反内卷迎来机会的<strong>多晶硅</strong>。多晶硅的景气拐点已看到，反应弱于（或晚于）算力板块是<strong>符合基本面状态的</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">锂矿龙头一季报：周期反转的强力验证</h3>
+                <span class="section-tag">业绩</span>
+            </div>
+            <div class="content">
+                <p>锂电板块股票反应在光伏板块之前，是因为<strong>碳酸锂已先行筑底</strong>。龙头一季报印证了景气反转迹象——周期股从亏损到爆发的弹性极大。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>Q1净利润</th>
+                            <th>同比增长</th>
+                            <th>vs去年全年</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">赣锋锂业</td>
+                            <td>16-21亿</td>
+                            <td class="trend-up">+540%~690%</td>
+                            <td>≈去年全年（16亿）</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">天齐锂业</td>
+                            <td>17-20亿</td>
+                            <td class="trend-up">+1500%</td>
+                            <td>3-4倍去年全年（4.1亿）</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>📉 周期底部</h4>
+                        <ul>
+                            <li>赣锋最差时一年亏20多亿</li>
+                            <li>天齐前年（2024）亏接近80亿</li>
+                            <li>周期底部深不可测</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>📈 周期巅峰</h4>
+                        <ul>
+                            <li>赣锋巅峰一年赚200亿</li>
+                            <li>天齐巅峰一年赚240亿</li>
+                            <li>从深渊到巅峰只需一年</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>赣锋锂业估值测算：</strong>若按Q1中值17.5亿年化（×4=70亿+），按当前1000亿市值计算，市盈率将大幅下降。<strong>但一切有赖于碳酸锂价格稳定</strong>，需持续观察。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>天齐锂业的复苏：</strong>Q1利润17-20亿，相当于去年全年的3-4倍。这有点像<strong>三星海力士的复苏</strong>——从深度亏损到爆发式反弹。反转型的行业就是这样的特点。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">后续观察：右侧到来前的两个关键变量</h3>
+                <span class="section-tag">策略</span>
+            </div>
+            <div class="content">
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🟡 变量一：价格企稳持续性</h4>
+                        <ul>
+                            <li>多晶硅涨价之下，硅料产品价格能否持续企稳？</li>
+                            <li>这是判断拐点真伪的第一道关</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 变量二：光伏产能出清进度</h4>
+                        <ul>
+                            <li>光伏供给侧的产能出清是否到位？</li>
+                            <li>如果供给仍过剩，价格反弹难持续</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>时间节点预判：</strong>如果上述两个条件在<strong>今年年底之前</strong>得到满足，行业拐点确认，整个板块的<strong>右侧机会</strong>就会到来。</p>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>定位——周期股中最滞后的领域：</strong>A股偏周期性的大部分行业已经都走出了这一轮经济周期的底部。锂矿如果确认反转，可能已是<strong>周期复苏的最后一棒</strong>。当前处于左侧向右侧过渡的观察期，不宜重仓追高，但应密切跟踪。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。锂矿和光伏均为强周期行业，业绩波动极大，Q1业绩爆发不代表全年可持续，碳酸锂价格波动是核心变量。多晶硅当前处于16万/吨附近整固，若政策落地不及预期或产能出清缓慢，价格可能再度回落。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

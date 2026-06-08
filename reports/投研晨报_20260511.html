@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月11日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">4月出口持续高增 · AI逆周期复苏 · 产业链避风港效应</p>
+            <p class="header-date">2026年5月11日 · 周一 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">📊</div>
+                    <div class="summary-text">
+                        <strong>出口重回两位数增长</strong>
+                        4月出口同比+9.8%，机电产品占出口63.5%，与"抢出口"完全无关，真实竞争力验证
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">⚡</div>
+                    <div class="summary-text">
+                        <strong>AI逆周期复苏</strong>
+                        发达经济体生产资料进口加速、消费品下降，中国AI相关设备出口增速维持50%以上
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🛡️</div>
+                    <div class="summary-text">
+                        <strong>产业链避风港效应</strong>
+                        战争一打中国出口反而更好，产业链完善+能源储备充裕，供应链安全水平远超他国
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🇨🇳</div>
+                    <div class="summary-text">
+                        <strong>特朗普无筹码访华</strong>
+                        国会裁定关税违法，科技自立自强有成效，5月14-15日访华或有利资本市场
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">出口数据全景：从"抢出口"到真实竞争力</h3>
+                <span class="section-tag">宏观数据</span>
+            </div>
+            <div class="content">
+                <p>4月进出口数据公布，在贸易战趋于稳定（美国已开始退关税、国会裁定特朗普关税行为违法）的背景下，出口维持非常乐观的状态。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指标（前4个月累计）</th>
+                            <th>数值</th>
+                            <th>同比</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">进出口总值</td>
+                            <td>16.23万亿</td>
+                            <td class="trend-up">+14.29%</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">机电产品出口</td>
+                            <td>5.92万亿</td>
+                            <td class="trend-up">+17.6%</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">机电占出口比重</td>
+                            <td>63.5%</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指标（4月单月）</th>
+                            <th>数值</th>
+                            <th>同比</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">进出口总值</td>
+                            <td>4.38万亿</td>
+                            <td class="trend-up">+14.2%</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">出口额</td>
+                            <td>2.48万亿</td>
+                            <td class="trend-up">+9.8%</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">进口额</td>
+                            <td>1.9万亿</td>
+                            <td class="trend-up">+26%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>关键判断：</strong>3月份受美伊战争影响，出口增速一度降至 2.5~6% 的水平；<strong>4月重新回归两位数增长</strong>。主讲人明确：<strong>去年还能说是"抢出口"，现在与抢出口已完全无关</strong>——这是真实竞争力的体现。</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>重点出口产品</th>
+                            <th>同比增速</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">电动车</td>
+                            <td class="trend-up">+68.1%</td>
+                            <td>海外空间仍大（欧洲、东盟）</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">锂电池</td>
+                            <td class="trend-up">+43.2%</td>
+                            <td>新能源车+储能双驱动</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">风力发电设备</td>
+                            <td class="trend-up">+40.7%</td>
+                            <td>新能源基础设施</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">工业机器人</td>
+                            <td class="trend-up">+30%</td>
+                            <td>智能制造升级</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>电动车出口高增：国内渗透率接近 50% 后增速放缓是正常现象，但<strong>海外空间仍大</strong>。锂电池出口：一方面是新能源车带动，另一方面是<strong>储能带动</strong>；未来 5~8 年储能对锂电池需求可能超过新能源车。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">AI驱动的生产资料进口逆周期复苏</h3>
+                <span class="section-tag">产业研判</span>
+            </div>
+            <div class="content">
+                <p>2025年以后，受AI驱动，发达经济体出现了一种反常现象：<strong>生产资料进口加速增长，消费品进口进入负区间</strong>。这是出口好的第一大驱动因素。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 正常经济周期</h4>
+                        <ul>
+                            <li>经济下行期消费品需求萎缩</li>
+                            <li>生产资料投资跟随下降</li>
+                            <li>整体进口增速放缓</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 AI扰动下</h4>
+                        <ul>
+                            <li>算力基础设施建设需求爆发</li>
+                            <li>能源技术设施更新加速</li>
+                            <li>生产资料进口逆周期恢复</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>中国出口的受益链条：</strong>中国AI相关设备出口、数据中心设备、光通信等，<strong>近两年增速维持在50%以上</strong>。在AI的带动下，本来处于下降周期的发达经济体需求，因算力基础设施和能源设施更新而被重新激活——中国成为最大受益者。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">产业链完整性的"避风港效应"</h3>
+                <span class="section-tag">宏观逻辑</span>
+            </div>
+            <div class="content">
+                <p>第二个驱动因素来自美伊战争和油价高企下的<strong>"避风港效应"</strong>。全世界都受战争影响，但<strong>中国受影响显然比其他国家小</strong>。</p>
+
+                <div class="quote-block">
+                    <p>"世界一开战、产业链一波动，中国的出口就像好——就像特朗普发动贸易战时，发现进口中国的东西反而更多了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>避风港逻辑：</strong>中国<strong>产业链完善</strong>，能源基本保障/储备充裕，能源进口受战争影响较小。其他国家的<strong>供应链和能源安全水平远低于中国</strong>——危机时刻，全球订单向中国集中。</p>
+                </div>
+
+                <p>去年贸易战最严重时已验证：中国经济的韧性、产业链的完整性是<strong>最终底气</strong>。今年出口有望延续较好状态，且与"抢出口"已完全无关。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">国内经济复苏与特朗普访华预期</h3>
+                <span class="section-tag">政策前瞻</span>
+            </div>
+            <div class="content">
+                <p>中国经济<strong>确定性在复苏阶段</strong>，但呈现明显的结构性分化：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 科技为先导</h4>
+                        <ul>
+                            <li>AI、新能源、高端制造恢复更快</li>
+                            <li>出口高增验证全球竞争力</li>
+                            <li>科技自立自强有成效</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 传统行业</h4>
+                        <ul>
+                            <li>地产链先见底企稳</li>
+                            <li>反弹不那么显著</li>
+                            <li>总体无大问题</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"如果到现在还陷入传统行业，你可能正在错过一个伟大的科技时代。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <p>5月14-15日，特朗普有可能到访中国。主讲人判断这是在<strong>没有任何筹码</strong>的情况下来访：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>原有两张牌</th>
+                            <th>当前状态</th>
+                            <th>效果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">贸易战牌</td>
+                            <td>美国国会已裁定特朗普关税行为违法</td>
+                            <td class="trend-down">失效，自身被动</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">AI芯片禁运牌</td>
+                            <td>中国GPU水平已接近世界先进，科技自立自强有成效</td>
+                            <td class="trend-down">失效，不再致命</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>乐观判断：</strong>这次特朗普访华过程中，<strong>可能有一些有利于中国经济、政治和资本市场的好事发生</strong>。总体判断：中国经济确定性复苏，科技为先导的行业恢复更好，传统行业稍慢但总体无大问题。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

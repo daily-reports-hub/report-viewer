@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研报查阅中心 | Research Report Viewer</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg-sidebar: #161b22;
+  --bg-card: #1c2128;
+  --border: #30363d;
+  --gold: #d4a853;
+  --gold-light: #e8c87a;
+  --red: #c0392b;
+  --green: #27ae60;
+  --blue: #58a6ff;
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --sidebar-width: 340px;
+  --sidebar-collapsed: 0px;
+  --header-height: 56px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+/* Layout */
+.app { display: flex; height: 100vh; width: 100vw; }
+
+/* Sidebar */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: width var(--transition), transform var(--transition);
+  position: relative;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed { width: 0; border-right: none; overflow: hidden; }
+
+.sidebar-inner {
+  width: var(--sidebar-width);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.sidebar-inner::-webkit-scrollbar { width: 6px; }
+.sidebar-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Toggle button */
+.sidebar-toggle {
+  position: absolute;
+  right: -14px;
+  top: 20px;
+  width: 28px;
+  height: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  z-index: 101;
+  transition: transform var(--transition);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.sidebar-toggle:hover { background: var(--border); transform: scale(1.1); }
+.sidebar.collapsed .sidebar-toggle { right: auto; left: 12px; }
+
+/* Hover trigger (desktop collapsed sidebar) */
+.sidebar-hover-trigger {
+  display: block;
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: 24px;
+  z-index: 90;
+  cursor: pointer;
+}
+
+.hover-trigger-line {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.sidebar-hover-trigger:hover .hover-trigger-line {
+  background: var(--gold);
+}
+
+.hover-trigger-btn {
+  position: absolute;
+  left: 6px; top: 50%; transform: translateY(-50%) translateX(-10px);
+  width: 32px; height: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+
+.sidebar-hover-trigger:hover .hover-trigger-btn {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.sidebar:not(.collapsed) ~ .sidebar-hover-trigger {
+  display: none;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), #b8943a);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+.logo-text h2 {
+  font-size: 16px; font-weight: 600; color: var(--gold-light); letter-spacing: 0.5px;
+}
+
+.logo-text span {
+  font-size: 11px; color: var(--text-muted);
+}
+
+/* Search */
+.search-box {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box input:focus { border-color: var(--gold); }
+
+.search-box input::placeholder { color: var(--text-muted); }
+
+.search-box .search-icon {
+  position: absolute;
+  left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-box .search-clear {
+  position: absolute;
+  right: 10px; top: 50%; transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  display: none;
+  padding: 4px;
+}
+
+.search-box .search-clear.visible { display: block; }
+
+/* Section headers */
+.section-header-sidebar {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 16px 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-header-sidebar span.count {
+  background: var(--bg-card);
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  color: var(--gold);
+}
+
+/* Calendar */
+.calendar {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.calendar-header button {
+  background: none; border: none; color: var(--text-secondary);
+  cursor: pointer; font-size: 16px; padding: 2px 8px;
+  border-radius: 4px; transition: background 0.2s;
+}
+
+.calendar-header button:hover { background: var(--bg-card); color: var(--gold); }
+
+.calendar-header .month-label {
+  font-size: 14px; font-weight: 600; color: var(--text);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.calendar-grid .weekday {
+  font-size: 10px; color: var(--text-muted);
+  padding: 4px 0; font-weight: 500;
+}
+
+.calendar-grid .day {
+  font-size: 12px; color: var(--text-secondary);
+  padding: 6px 2px;
+  border-radius: 6px;
+  cursor: default;
+  transition: all 0.15s;
+}
+
+.calendar-grid .day.other-month { color: var(--text-muted); opacity: 0.4; }
+
+.calendar-grid .day.has-report {
+  background: rgba(212,168,83,0.12);
+  color: var(--gold-light);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calendar-grid .day.has-report:hover {
+  background: rgba(212,168,83,0.25);
+  transform: scale(1.1);
+}
+
+.calendar-grid .day.has-report.active {
+  background: var(--gold);
+  color: #000;
+}
+
+.calendar-grid .day.today {
+  box-shadow: inset 0 0 0 1px var(--blue);
+}
+
+/* Report list */
+.report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.report-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+
+.report-item:hover {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+.report-item.active {
+  background: rgba(212,168,83,0.08);
+  border-color: rgba(212,168,83,0.3);
+}
+
+.report-item .date-badge {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: "SF Mono", Monaco, monospace;
+  white-space: nowrap;
+  margin-top: 2px;
+  min-width: 48px;
+}
+
+.report-item .info {
+  flex: 1;
+  min-width: 0;
+}
+
+.report-item .info .title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.report-item.active .info .title { color: var(--gold-light); }
+
+.report-item .info .tags {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.report-item .fav-btn {
+  opacity: 0;
+  transition: opacity 0.15s;
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; font-size: 14px; padding: 2px;
+}
+
+.report-item:hover .fav-btn { opacity: 1; }
+
+.report-item .fav-btn.favorited { opacity: 1; color: var(--gold); }
+
+/* Search results highlight */
+.search-match {
+  background: rgba(212,168,83,0.15);
+  color: var(--gold-light);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+}
+
+/* Toolbar */
+.toolbar {
+  height: var(--header-height);
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.toolbar .report-title {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.toolbar .report-title h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toolbar .report-title .meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toolbar .report-title .meta span.tag-pill {
+  display: inline-block;
+  background: rgba(212,168,83,0.1);
+  color: var(--gold);
+  padding: 0 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin-left: 6px;
+  border: 1px solid rgba(212,168,83,0.2);
+}
+
+.toolbar .nav-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.toolbar button {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.toolbar button:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+.toolbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toolbar button .icon { font-size: 14px; }
+
+/* Iframe container */
+.viewer {
+  flex: 1;
+  position: relative;
+  background: var(--bg);
+}
+
+.viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: var(--bg);
+}
+
+.viewer .empty-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  gap: 16px;
+}
+
+.viewer .empty-state .empty-icon {
+  font-size: 64px;
+  opacity: 0.3;
+}
+
+.viewer .empty-state h2 {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.viewer .empty-state p {
+  font-size: 14px;
+  max-width: 400px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* Keyboard hint */
+.keyboard-hint {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.keyboard-hint.visible { opacity: 1; }
+
+.keyboard-hint kbd {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-family: monospace;
+  font-size: 10px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.breadcrumb-link {
+  color: var(--gold) !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s;
+}
+
+.breadcrumb-link:hover {
+  opacity: 0.8;
+  text-decoration: underline !important;
+}
+
+.breadcrumb-link:visited {
+  color: var(--gold-light) !important;
+}
+
+.breadcrumb-sep {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.breadcrumb-current {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.loading-overlay.active { opacity: 1; pointer-events: all; }
+
+.spinner {
+  width: 32px; height: 32px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Mobile overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root { --sidebar-width: 280px; }
+  
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+  }
+  
+  .sidebar.open { transform: translateX(0); width: var(--sidebar-width) !important; }
+  
+  .sidebar.collapsed { transform: translateX(-100%); width: var(--sidebar-width) !important; }
+  
+  .sidebar-hover-trigger {
+    display: none;
+  }
+  
+  .sidebar-toggle {
+    position: fixed;
+    left: 12px; top: 14px;
+    right: auto;
+    background: var(--bg-card);
+    z-index: 102;
+  }
+  
+  .toolbar { padding-left: 48px; }
+  
+  .mobile-overlay.active { display: block; }
+  
+  .toolbar button span { display: none; }
+  
+  .keyboard-hint { display: none; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+/* Favorites section */
+.fav-section { display: none; }
+.fav-section.visible { display: block; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <div class="logo">
+        <div class="logo-icon">📊</div>
+        <div class="logo-text">
+          <h2>研报查阅中心</h2>
+          <span id="total-count">加载中...</span>
+        </div>
+      </div>
+      
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="搜索标题、标签、内容..." autocomplete="off">
+        <span class="search-clear" id="search-clear">✕</span>
+      </div>
+      
+      <div class="section-header-sidebar">
+        <span>📅 日历</span>
+      </div>
+      <div class="calendar" id="calendar"></div>
+      
+      <div class="fav-section" id="fav-section">
+        <div class="section-header-sidebar">
+          <span>⭐ 收藏</span>
+          <span class="count" id="fav-count">0</span>
+        </div>
+        <div class="report-list" id="fav-list"></div>
+      </div>
+      
+      <div class="section-header-sidebar">
+        <span id="recent-label">📋 最近10篇</span>
+        <span class="count" id="recent-count">0</span>
+      </div>
+      <div class="report-list" id="report-list"></div>
+    </div>
+    <button class="sidebar-toggle" id="sidebar-toggle" title="收起/展开侧边栏">◀</button>
+  </aside>
+  
+  <div class="sidebar-hover-trigger" id="hover-trigger" title="展开侧边栏">
+    <div class="hover-trigger-line"></div>
+    <button class="hover-trigger-btn">▶</button>
+  </div>
+  
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  
+  <main class="main">
+    <div class="toolbar">
+      <div class="report-title">
+        <h3 id="current-title">请选择一篇研报</h3>
+        <div class="meta" id="current-meta"></div>
+      </div>
+      <div class="nav-btns">
+        <button id="btn-prev" title="上一篇 (←)"><span class="icon">◀</span><span>上一篇</span></button>
+        <button id="btn-next" title="下一篇 (→)"><span>下一篇</span><span class="icon">▶</span></button>
+        <button id="btn-fav" title="收藏 (F)"><span class="icon">☆</span></button>
+        <button id="btn-list" title="返回列表"><span class="icon">📋</span></button>
+        <button id="btn-external" title="新窗口打开"><span class="icon">↗</span></button>
+        <button id="btn-fullscreen" title="全屏 (F11)"><span class="icon">⛶</span></button>
+      </div>
+    </div>
+    
+    <div class="breadcrumb" id="breadcrumb">
+      <a href="report_list.html" class="breadcrumb-link">📋 研报历史总览</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current" id="breadcrumb-current">请选择一篇研报</span>
+    </div>
+    
+    <div class="viewer" id="viewer">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📑</div>
+        <h2>欢迎使用研报查阅中心</h2>
+        <p>左侧边栏可选择日历日期、浏览最近研报，或使用搜索框快速定位。<br>支持键盘快捷键：← → 切换研报，F 收藏</p>
+        <a href="report_list.html" style="display:inline-block;margin-top:12px;background:rgba(212,168,83,0.1);border:1px solid rgba(212,168,83,0.2);color:var(--gold);padding:8px 16px;border-radius:8px;text-decoration:none;font-size:14px;">📋 查看历史总览列表</a>
+      </div>
+      <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+      </div>
+      <iframe id="report-frame" style="display:none;"></iframe>
+    </div>
+  </main>
+</div>
+
+<div class="keyboard-hint" id="keyboard-hint">
+  <kbd>←</kbd> 上一篇 &nbsp; <kbd>→</kbd> 下一篇 &nbsp; <kbd>F</kbd> 收藏 &nbsp; <kbd>F11</kbd> 全屏
+</div>
+
+<script>
+// ===== Data & State =====
+let reports = [];
+let currentIndex = -1;
+let favorites = JSON.parse(localStorage.getItem('report_favorites') || '[]');
+let isMobile = window.innerWidth <= 768;
+let searchMode = false;
+
+// ===== DOM refs =====
+const $ = id => document.getElementById(id);
+const sidebar = $('sidebar');
+const searchInput = $('search-input');
+const searchClear = $('search-clear');
+const reportList = $('report-list');
+const favList = $('fav-list');
+const favSection = $('fav-section');
+const calendarEl = $('calendar');
+const frame = $('report-frame');
+const emptyState = $('empty-state');
+const loadingOverlay = $('loading-overlay');
+const currentTitle = $('current-title');
+const currentMeta = $('current-meta');
+const totalCount = $('total-count');
+const recentCount = $('recent-count');
+const favCount = $('fav-count');
+const btnPrev = $('btn-prev');
+const btnNext = $('btn-next');
+const btnFav = $('btn-fav');
+const btnList = $('btn-list');
+const btnExternal = $('btn-external');
+const btnFullscreen = $('btn-fullscreen');
+const sidebarToggle = $('sidebar-toggle');
+const mobileOverlay = $('mobile-overlay');
+const keyboardHint = $('keyboard-hint');
+
+// ===== Init =====
+async function init() {
+  try {
+    const res = await fetch('reports_index.json?v=' + Date.now());
+    reports = await res.json();
+    // Sort by date descending
+    reports.sort((a,b) => b.date_raw.localeCompare(a.date_raw));
+    totalCount.textContent = reports.length + ' 篇研报';
+    renderCalendar();
+    renderRecent();
+    renderFavorites();
+    // Load from hash or default to latest
+    const hash = location.hash.slice(1);
+    if (hash) {
+      const idx = reports.findIndex(r => r.filename === decodeURIComponent(hash));
+      if (idx >= 0) loadReport(idx);
+    } else {
+      loadReport(0);
+    }
+  } catch (e) {
+    totalCount.textContent = '加载失败';
+    console.error(e);
+  }
+}
+
+// ===== Calendar =====
+let calYear, calMonth;
+
+function renderCalendar() {
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth() + 1;
+  drawCalendar();
+}
+
+function drawCalendar() {
+  const dateSet = new Set(reports.map(r => `${r.year}-${String(r.month).padStart(2,'0')}-${String(r.day).padStart(2,'0')}`));
+  const daysInMonth = new Date(calYear, calMonth, 0).getDate();
+  const firstDay = new Date(calYear, calMonth - 1, 1).getDay();
+  const today = new Date();
+  const isToday = (d) => calYear === today.getFullYear() && calMonth === today.getMonth()+1 && d === today.getDate();
+  
+  let html = '<div class="calendar-header">';
+  html += '<button onclick="changeMonth(-1)">◀</button>';
+  html += '<span class="month-label">' + calYear + '年' + calMonth + '月</span>';
+  html += '<button onclick="changeMonth(1)">▶</button>';
+  html += '</div>';
+  html += '<div class="calendar-grid">';
+  const weekdays = ['日','一','二','三','四','五','六'];
+  weekdays.forEach(w => html += '<div class="weekday">' + w + '</div>');
+  
+  for (let i=0; i<firstDay; i++) html += '<div class="day other-month"></div>';
+  
+  for (let d=1; d<=daysInMonth; d++) {
+    const dateKey = `${calYear}-${String(calMonth).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const hasReport = dateSet.has(dateKey);
+    const classes = ['day'];
+    if (hasReport) classes.push('has-report');
+    if (isToday(d)) classes.push('today');
+    const report = hasReport ? reports.find(r => `${r.year}-${String(r.month).padStart(2,'0')}-${String(r.day).padStart(2,'0')}` === dateKey) : null;
+    const onclick = hasReport ? `onclick="loadReportByDate('${dateKey}')"` : '';
+    html += `<div class="${classes.join(' ')}" ${onclick} title="${report ? report.title : ''}">${d}</div>`;
+  }
+  html += '</div>';
+  calendarEl.innerHTML = html;
+}
+
+function changeMonth(delta) {
+  calMonth += delta;
+  if (calMonth > 12) { calMonth = 1; calYear++; }
+  if (calMonth < 1) { calMonth = 12; calYear--; }
+  drawCalendar();
+}
+
+function loadReportByDate(dateKey) {
+  const r = reports.find(rep => `${rep.year}-${String(rep.month).padStart(2,'0')}-${String(rep.day).padStart(2,'0')}` === dateKey);
+  if (r) {
+    const idx = reports.findIndex(rep => rep.filename === r.filename);
+    loadReport(idx);
+    if (isMobile) closeSidebar();
+  }
+}
+
+// ===== Report List Rendering =====
+function createReportItem(r, idx, highlightQuery) {
+  const el = document.createElement('div');
+  el.className = 'report-item' + (idx === currentIndex ? ' active' : '');
+  el.dataset.index = idx;
+  
+  let title = r.short_title || r.title;
+  let tags = r.tags || '音频纪要';
+  
+  if (highlightQuery) {
+    const q = highlightQuery.toLowerCase();
+    const re = new RegExp('(' + escapeRegex(q) + ')', 'gi');
+    title = title.replace(re, '<span class="search-match">$1</span>');
+    tags = tags.replace(re, '<span class="search-match">$1</span>');
+  }
+  
+  const isFav = favorites.includes(r.filename);
+  
+  el.innerHTML = `
+    <div class="date-badge">${String(r.month).padStart(2,'0')}-${String(r.day).padStart(2,'0')}</div>
+    <div class="info">
+      <div class="title">${title}</div>
+      <div class="tags">${tags}</div>
+    </div>
+    <button class="fav-btn ${isFav ? 'favorited' : ''}" title="收藏" onclick="event.stopPropagation(); toggleFavoriteByIdx(${idx})">${isFav ? '★' : '☆'}</button>
+  `;
+  
+  el.addEventListener('click', () => {
+    loadReport(idx);
+    if (isMobile) closeSidebar();
+  });
+  
+  return el;
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function renderRecent() {
+  const recent = reports.slice(0, 10);
+  recentCount.textContent = recent.length;
+  reportList.innerHTML = '';
+  if (recent.length === 0) {
+    reportList.innerHTML = '<div class="no-results">暂无研报</div>';
+    return;
+  }
+  recent.forEach((r, i) => {
+    reportList.appendChild(createReportItem(r, i));
+  });
+}
+
+function renderFavorites() {
+  const favReports = reports.filter(r => favorites.includes(r.filename));
+  favCount.textContent = favReports.length;
+  favList.innerHTML = '';
+  if (favReports.length > 0) {
+    favSection.classList.add('visible');
+    favReports.forEach(r => {
+      const idx = reports.findIndex(rep => rep.filename === r.filename);
+      favList.appendChild(createReportItem(r, idx));
+    });
+  } else {
+    favSection.classList.remove('visible');
+  }
+}
+
+// ===== Search =====
+let searchTimeout;
+searchInput.addEventListener('input', (e) => {
+  const q = e.target.value.trim();
+  searchClear.classList.toggle('visible', q.length > 0);
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => performSearch(q), 200);
+});
+
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchClear.classList.remove('visible');
+  renderRecent();
+  searchMode = false;
+});
+
+function performSearch(q) {
+  if (!q) {
+    searchMode = false;
+    $('recent-label').textContent = '📋 最近10篇';
+    renderRecent();
+    return;
+  }
+  searchMode = true;
+  $('recent-label').textContent = '🔍 搜索结果';
+  const lowerQ = q.toLowerCase();
+  const results = reports.map((r, idx) => {
+    const text = r.search_text || '';
+    const title = (r.short_title || r.title).toLowerCase();
+    const tags = (r.tags || '').toLowerCase();
+    let score = 0;
+    if (title.includes(lowerQ)) score += 10;
+    if (tags.includes(lowerQ)) score += 5;
+    const idxText = text.indexOf(lowerQ);
+    if (idxText >= 0) score += 1;
+    return { r, idx, score };
+  }).filter(x => x.score > 0).sort((a,b) => b.score - a.score);
+  
+  recentCount.textContent = results.length;
+  reportList.innerHTML = '';
+  if (results.length === 0) {
+    reportList.innerHTML = '<div class="no-results">未找到匹配的研报</div>';
+    return;
+  }
+  results.forEach(({r, idx}) => {
+    reportList.appendChild(createReportItem(r, idx, q));
+  });
+}
+
+// ===== Load Report =====
+function loadReport(idx) {
+  if (idx < 0 || idx >= reports.length) return;
+  currentIndex = idx;
+  const r = reports[idx];
+  
+  // Update UI
+  currentTitle.textContent = r.title;
+  const tagsHtml = r.tags ? r.tags.split('·').map(t => `<span class="tag-pill">${t.trim()}</span>`).join('') : '';
+  currentMeta.innerHTML = `${r.date}${tagsHtml}`;
+  
+  // Update breadcrumb
+  const breadcrumbCurrent = $('breadcrumb-current');
+  if (breadcrumbCurrent) {
+    breadcrumbCurrent.textContent = r.short_title || r.title;
+  }
+  
+  // Update list active states
+  document.querySelectorAll('.report-item').forEach(el => {
+    el.classList.toggle('active', parseInt(el.dataset.index) === idx);
+  });
+  
+  // Update nav buttons
+  btnPrev.disabled = idx === 0;
+  btnNext.disabled = idx === reports.length - 1;
+  
+  // Update fav button
+  btnFav.innerHTML = favorites.includes(r.filename) ? '<span class="icon">★</span>' : '<span class="icon">☆</span>';
+  btnFav.title = favorites.includes(r.filename) ? '取消收藏 (F)' : '收藏 (F)';
+  
+  // Show loading
+  emptyState.style.display = 'none';
+  frame.style.display = 'none';
+  loadingOverlay.classList.add('active');
+  
+  // Load iframe
+  frame.src = 'reports/' + encodeURIComponent(r.filename);
+  
+  frame.onload = () => {
+    loadingOverlay.classList.remove('active');
+    frame.style.display = 'block';
+  };
+  
+  frame.onerror = () => {
+    loadingOverlay.classList.remove('active');
+    emptyState.style.display = 'flex';
+    emptyState.innerHTML = '<div class="empty-icon">⚠️</div><h2>加载失败</h2><p>无法加载该研报，请检查文件是否存在</p>';
+  };
+  
+  // Update hash
+  history.replaceState(null, null, '#' + encodeURIComponent(r.filename));
+}
+
+// ===== Favorites =====
+function toggleFavoriteByIdx(idx) {
+  const filename = reports[idx].filename;
+  toggleFavorite(filename);
+}
+
+function toggleFavorite(filename) {
+  const pos = favorites.indexOf(filename);
+  if (pos >= 0) {
+    favorites.splice(pos, 1);
+  } else {
+    favorites.push(filename);
+  }
+  localStorage.setItem('report_favorites', JSON.stringify(favorites));
+  renderFavorites();
+  // Refresh current list to update star icons
+  if (searchMode) {
+    performSearch(searchInput.value.trim());
+  } else {
+    renderRecent();
+  }
+  // Update toolbar star
+  if (currentIndex >= 0) {
+    const r = reports[currentIndex];
+    btnFav.innerHTML = favorites.includes(r.filename) ? '<span class="icon">★</span>' : '<span class="icon">☆</span>';
+  }
+}
+
+btnFav.addEventListener('click', () => {
+  if (currentIndex >= 0) toggleFavorite(reports[currentIndex].filename);
+});
+
+// ===== Navigation =====
+btnPrev.addEventListener('click', () => loadReport(currentIndex - 1));
+btnNext.addEventListener('click', () => loadReport(currentIndex + 1));
+
+btnList.addEventListener('click', () => {
+  window.location.href = 'report_list.html';
+});
+
+btnExternal.addEventListener('click', () => {
+  if (currentIndex >= 0) {
+    window.open('reports/' + encodeURIComponent(reports[currentIndex].filename), '_blank');
+  }
+});
+
+btnFullscreen.addEventListener('click', () => {
+  const viewer = document.getElementById('viewer');
+  if (!document.fullscreenElement) {
+    viewer.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+// ===== Sidebar Toggle =====
+function toggleSidebar() {
+  if (isMobile) {
+    sidebar.classList.toggle('open');
+    mobileOverlay.classList.toggle('active');
+    sidebarToggle.innerHTML = sidebar.classList.contains('open') ? '✕' : '▶';
+  } else {
+    sidebar.classList.toggle('collapsed');
+    sidebarToggle.innerHTML = sidebar.classList.contains('collapsed') ? '▶' : '◀';
+  }
+}
+
+function closeSidebar() {
+  if (isMobile) {
+    sidebar.classList.remove('open');
+    mobileOverlay.classList.remove('active');
+    sidebarToggle.innerHTML = '▶';
+  }
+}
+
+sidebarToggle.addEventListener('click', toggleSidebar);
+mobileOverlay.addEventListener('click', closeSidebar);
+
+// Hover trigger for desktop collapsed sidebar
+const hoverTrigger = $('hover-trigger');
+if (hoverTrigger) {
+  hoverTrigger.addEventListener('click', () => {
+    if (!isMobile) {
+      sidebar.classList.remove('collapsed');
+      sidebarToggle.innerHTML = '◀';
+    }
+  });
+}
+
+// ===== Keyboard Shortcuts =====
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT') return;
+  
+  if (e.key === 'ArrowLeft' && !btnPrev.disabled) {
+    loadReport(currentIndex - 1);
+  } else if (e.key === 'ArrowRight' && !btnNext.disabled) {
+    loadReport(currentIndex + 1);
+  } else if (e.key === 'f' || e.key === 'F') {
+    if (currentIndex >= 0) toggleFavorite(reports[currentIndex].filename);
+  } else if (e.key === 'Escape') {
+    if (isMobile && sidebar.classList.contains('open')) closeSidebar();
+  }
+});
+
+// Keyboard hint visibility
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Control' || e.key === 'Meta') {
+    keyboardHint.classList.add('visible');
+  }
+});
+document.addEventListener('keyup', (e) => {
+  if (e.key === 'Control' || e.key === 'Meta') {
+    keyboardHint.classList.remove('visible');
+  }
+});
+
+// ===== Responsive =====
+window.addEventListener('resize', () => {
+  isMobile = window.innerWidth <= 768;
+});
+
+// ===== Init =====
+init();
+</script>
+</body>
+</html>

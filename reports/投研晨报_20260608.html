@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年6月8日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">周五美股暴跌，全球市场何去何从</p>
+            <p class="header-date">2026年6月8日 · 周一 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon red">🏛️</div>
+                    <div class="summary-text">
+                        <strong>非农数据引爆暴跌</strong>
+                        美国非农就业远超预期，纳指跌4%、费城半导体指数跌10%，AI科技股遭遇重挫
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🌍</div>
+                    <div class="summary-text">
+                        <strong>降息预期逆转</strong>
+                        6月16-17日美联储议息会议，新主席沃什首次发布点阵图，降息指引或进一步下调
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>AI牛市根基未变</strong>
+                        纳指从20000→27000涨超30%后回调5%是健康波动，基本面未恶化，无需恐慌
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">💰</div>
+                    <div class="summary-text">
+                        <strong>三类差异化应对</strong>
+                        均衡配置者不慌、缺科技者分批加仓、纯科技者降仓均衡，切忌追涨杀跌
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">暴跌归因：非农数据与多重压力共振</h3>
+                <span class="section-tag">全球市场</span>
+            </div>
+            <div class="content">
+                <p>周末中国股民在惴惴不安中度过：一方面家有考生迎战高考，另一方面美股周五出现暴跌——纳斯达克指数跌4%，费城半导体指数跌10%，以AI为代表的美股科技公司遭遇重挫。</p>
+
+                <p><strong>直接诱因是美国公布远超预期的非农就业数据。</strong>就业数据强劲本应是经济向好的信号，但当前市场的主要矛盾是美联储利率政策：就业改善叠加通胀温和反弹，使市场认为降息的必要性在下降，甚至产生加息预期。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>压力来源</th>
+                            <th>核心内容</th>
+                            <th>市场影响</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">非农就业数据</td>
+                            <td>远超预期，就业市场强劲</td>
+                            <td class="trend-down">降息预期下降，流动性预期收紧</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">通胀温和反弹</td>
+                            <td>油价+核心通胀双重推动</td>
+                            <td class="trend-down">加息担忧升温</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">SpaceX IPO抽血</td>
+                            <td>融资750亿美元，拒绝中国/香港资金</td>
+                            <td class="trend-down">美股流动性承压</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">中美金融博弈</td>
+                            <td>资本市场成为博弈战场</td>
+                            <td class="trend-down">情绪面受扰动</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>核心判断：</strong>本次暴跌是<strong>预期层面的流动性冲击</strong>，而非AI产业基本面的根本恶化。主讲人明确判断：年内加息的概率很低很低，除非通胀出现难以控制的迹象。当前市场反应更多是对降息预期延迟的定价修正。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">美联储政策前瞻：6月点阵图或更鹰</h3>
+                <span class="section-tag">宏观政策</span>
+            </div>
+            <div class="content">
+                <p>观察美联储利率走向最权威的窗口是每季度发布的"点阵图"（dot plot）。6月16-17日的议息会议将是新任主席沃什上台后的首次点阵图发布，市场普遍预期会比3月份更加偏鹰。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 3月点阵图回顾</h4>
+                        <ul>
+                            <li>19位联储官员综合意见</li>
+                            <li>年内平均降息约1次（25bp）</li>
+                            <li>7人认为年内应降1次</li>
+                            <li>1人极端认为应降4次</li>
+                            <li>总体：降息延后但未消失</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 6月点阵图预期</h4>
+                        <ul>
+                            <li>就业数据进一步改善</li>
+                            <li>通胀温和反弹+油价支撑</li>
+                            <li>沃什主张缩表、重视通胀</li>
+                            <li>降息指引大概率下调</li>
+                            <li>年内加息概率仍低</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"现在你从官方的口径来说，并没有年内肯定要加息这样的情况。我个人认为年内加息的可能性是很低很低的，除非通胀进一步出现难以控制的迹象。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">波动本质：大涨30%后的健康调整</h3>
+                <span class="section-tag">市场研判</span>
+            </div>
+            <div class="content">
+                <p>从技术分析的角度，纳斯达克指数从3月份的约20000点上涨至27000点以上，在一个多月的时间里涨幅超过30%。如此快速的上涨之后，出现5%左右的回调是非常正常、甚至非常健康的波动。</p>
+
+                <div class="highlight-box success">
+                    <p><strong>理性看待波动：</strong>平时拿着美股天天涨一点，体验非常好，但涨了30%多之后中间有一天跌5%，其实是再正常不过的事情。如果你连这点小风浪都经不起，其实真的不适合做投资。</p>
+                </div>
+
+                <p><strong>光模块等前期强势板块的风险已提前提示。</strong>在光大幅上涨之后，投研团队已明确提示其短期风险。虽然中长期这些公司未必见顶，但短期出现类似人形机器人去年上半年、卫星互联网去年12月份那样为期两三个月的调整，可能性非常大。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>时间阶段</th>
+                            <th>纳指表现</th>
+                            <th>性质判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">3月低点→6月初</td>
+                            <td class="trend-up">20000→27000+（+30%）</td>
+                            <td>快速主升浪，AI基本面驱动</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">6月5日（周五）</td>
+                            <td class="trend-down">暴跌约4%</td>
+                            <td>流动性预期修正，技术性回调</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">后续展望</td>
+                            <td>短期震荡调整</td>
+                            <td>基本面未变，调整属正常范畴</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">应对策略：三类投资者的差异化方案</h3>
+                <span class="section-tag">投资纪律</span>
+            </div>
+            <div class="content">
+                <p>针对当前市场所处的位置和不同投资者的持仓结构，主讲人给出了明确的三类应对方案：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 均衡配置且已兑现利润</h4>
+                        <ul>
+                            <li>科技+老灯均衡持有</li>
+                            <li>贯彻了规律性兑现利润</li>
+                            <li><strong>不用慌</strong>，这是正常波动</li>
+                            <li>耐心持有，静待市场修复</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 科技配置不足或老灯偏高</h4>
+                        <ul>
+                            <li>前期未配科技或老灯占比过高</li>
+                            <li>随科技板块调整<strong>逐步加仓</strong></li>
+                            <li>分批进行：小跌小买、大跌大买</li>
+                            <li>可通过科技50等宽基分散风险</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="impact-grid" style="margin-top: 16px;">
+                    <div class="impact-card negative">
+                        <h4>🔴 纯科技、无老灯</h4>
+                        <ul>
+                            <li>前期赚钱但可能未兑现利润</li>
+                            <li>应适当<strong>降低科技配置</strong></li>
+                            <li>向均衡化配置靠拢</li>
+                            <li>避免单一赛道过度暴露</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 海外市场配置</h4>
+                        <ul>
+                            <li>期待类似3月的黄金坑机会</li>
+                            <li>若出现暴跌则积极增配</li>
+                            <li>若未出现则保持现有配置</li>
+                            <li>不因短期波动放弃海外配置</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>重要提醒：</strong>光模块等前期涨幅巨大的板块，随着全球科技股调整可能维持一段时间的震荡。如果你之前没有配置，跌了一天就全仓冲进去，是非常不合适的行为。要分批、要冷静，不要做"没见过市面"的事情。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">投资心态：日月江汉之喻</h3>
+                <span class="section-tag">投资者教育</span>
+            </div>
+            <div class="content">
+                <p>恰逢高考首日，主讲人以全国二卷作文题目中的古句作结，与投资者共勉：</p>
+
+                <div class="quote-block">
+                    <p>"日月不蚀其体，故蔽而复明；江汉不蚀其源，故穷而复通。"</p>
+                    <div class="quote-author">— 2026年高考全国二卷作文题</div>
+                </div>
+
+                <p>这句话的意思是：太阳和月亮都有被遮蔽的时候，但只要本体未变、仍在发光发热，就始终能重放光明；江河即使遭到险阻，只要源头不枯竭，终能贯通入海。</p>
+
+                <p>这与投资和个人成长都有异曲同工之妙：<strong>中国科技崛起的总趋势是好的，AI产业革命的方向是明确的。</strong>就像日月不蚀其体、江汉不蚀其源，只要我们能看到远处那个正确的目标和能够达到的结果，过程中的波折——无论是日月被遮蔽还是江汉被阻塞——都是前进中需要付出的代价、需要经历的事情。</p>
+
+                <div class="highlight-box success">
+                    <p><strong>核心启示：</strong>投资从来没有一帆风顺。如果你的预期是"老师推荐一个东西我买了之后天天涨"，那你不是太瞧得起老师，而是太瞧得起投资这个职业了。就像世上没有"神医"——没有什么毛病吃一副药就能好。接受波动、理解波动、在波动中坚守正确方向，才是长期致胜之道。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

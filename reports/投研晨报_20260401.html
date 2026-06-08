@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月1日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">美伊停战曙光 · 美股暴涨 · 日韩高开 · 新质生产力IPO浪潮</p>
+            <p class="header-date">2026年4月1日 · 周二 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">🕊️</div>
+                    <div class="summary-text">
+                        <strong>美伊停战现曙光</strong>
+                        特朗普愿结束军事行动，伊朗总统明确表态愿意结束战争，全球资本市场乐观预期
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>美股三大指数暴涨</strong>
+                        纳斯达克+3.83%，标普500+2.91%，道琼斯+2.49%；日韩股市高开3.4%和5%
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">💾</div>
+                    <div class="summary-text">
+                        <strong>存储芯片回调是机会</strong>
+                        DDR内存价格下跌属短期波动，三星海力士动态PE仅20-30倍，配置价值仍在
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">🚀</div>
+                    <div class="summary-text">
+                        <strong>新质生产力IPO加速</strong>
+                        长鑫存储、蓝箭、中科宇航、银河航天、语树科技等龙头半年内有望登陆A股
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">美伊停战曙光：双方释放明确和平信号</h3>
+                <span class="section-tag">地缘政治</span>
+            </div>
+            <div class="content">
+                <p>美伊冲突出现重大转机，双方同时释放明确的停战意愿：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>表态方</th>
+                            <th>核心内容</th>
+                            <th>信号意义</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">特朗普</td>
+                            <td>即使霍尔木兹海峡仍大体关闭，也愿意结束军事行动；战争很可能很快结束</td>
+                            <td class="trend-up">明确停战意愿，且已多次表态</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">伊朗总统<br>佩泽希齐扬</td>
+                            <td>愿意结束战争，前提是停止受到攻击、核心诉求得到满足、获得不再遭受侵略的保障</td>
+                            <td class="trend-up">近期最明确的停战表态</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>市场反应：</strong>资本市场基于战争快速结束的乐观预期，<strong>美股三大股指暴涨</strong>——纳斯达克+3.83%，标普500+2.91%，道琼斯+2.49%。日韩股市今早分别高开3.4%和5%。</p>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>操作提示：</strong>前期已将原油利润和部分本金兑现出来、增持A股港股日韩的投资者，正在兑现这一逻辑。战争结束预期下，全球市场和能源冲击有望<strong>重新回到正轨</strong>，就像去年的贸易战结束后进入新常态一样。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">存储芯片：大牛市中的回调是增配机会</h3>
+                <span class="section-tag">半导体</span>
+            </div>
+            <div class="content">
+                <p>近期DDR内存价格有所下跌，引发市场担忧。但需要明确：<strong>存储芯片价格本质上和股票一样</strong>——大牛市中也有回调。存储芯片周期远未结束。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 日本配置逻辑</h4>
+                        <ul>
+                            <li>核心标的：五大商社</li>
+                            <li>日本高科技在AI时代缺乏新意</li>
+                            <li>传统优势领域的稳健配置</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 韩国配置逻辑</h4>
+                        <ul>
+                            <li>核心标的：存储芯片</li>
+                            <li>三星、海力士动态PE仅20-30倍</li>
+                            <li>纯正存储龙头，估值不贵</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>核心判断：</strong>在美股维持高位的状态下，海外配置中能够部分<strong>替代美股</strong>的就是日本和韩国。存储芯片价格阶段性下跌带来的股价冲击，恰恰是重新增加配置的机会。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">新质生产力IPO浪潮：半年内多个龙头登陆A股</h3>
+                <span class="section-tag">IPO</span>
+            </div>
+            <div class="content">
+                <p>近期多个新质生产力领域的龙头企业IPO进程加速，资本市场将迎来真正的硬科技龙头：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>领域</th>
+                            <th>IPO状态</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">长鑫存储</td>
+                            <td>存储芯片</td>
+                            <td>审核"中止"，补充财务数据后恢复</td>
+                            <td class="trend-up">上来即万亿级企业</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">蓝箭航天</td>
+                            <td>商业火箭</td>
+                            <td>审核中</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">中科宇航</td>
+                            <td>商业火箭</td>
+                            <td>审核已受理</td>
+                            <td>力箭发射成功</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">银河航天</td>
+                            <td>卫星互联网</td>
+                            <td>启动IPO辅导</td>
+                            <td>遗憾最后一轮未引入新股东</td>
+                        </tr>
+                        <tr>
+                            <td>天兵科技</td>
+                            <td>商业航天</td>
+                            <td>进程中</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>星河动力</td>
+                            <td>商业航天</td>
+                            <td>进程中</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>星际荣耀</td>
+                            <td>商业航天</td>
+                            <td>进程中</td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>语树科技</td>
+                            <td>机器人</td>
+                            <td>进程中</td>
+                            <td>人形机器人龙头</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box alert">
+                    <p><strong>澄清误区：</strong>长鑫存储IPO审核是<strong>"中止"</strong>（中间的中），不是"终止"。原因是在等待过程中财务数据过期，需要补充新一期的财务数据，之后会重新恢复审核。不明白基本常识的才会传"终止"。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">港股新经济：GPU、大模型、世界模型、灵巧手</h3>
+                <span class="section-tag">港股</span>
+            </div>
+            <div class="content">
+                <p>除了A股，港股市场也在快速丰富科技标的：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>类别</th>
+                            <th>已上市/拟上市</th>
+                            <th>领域</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">GPU</td>
+                            <td>壁仞科技、天数智芯</td>
+                            <td>国产GPU芯片</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">大模型</td>
+                            <td>智谱AI、MiniMax</td>
+                            <td>通用大模型</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">世界模型</td>
+                            <td>多家公司规划中（下半年上市）</td>
+                            <td>帮助机器人认识周边环境</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">灵巧手</td>
+                            <td>多家公司规划中（下半年上市）</td>
+                            <td>机器人末端执行器</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>趋势判断：</strong>随着这些公司上市，A股和港股资本市场的<strong>科技含金量会逐步提升</strong>，极大丰富这一轮科技浪潮中可供选择的标的。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">中美科技股估值对标：差距与机会</h3>
+                <span class="section-tag">估值研判</span>
+            </div>
+            <div class="content">
+                <p>纳斯达克虽然涨了很多，但市盈率<strong>仅40多倍</strong>。如果巴菲特看中国的科技股，估值差距大到"直接晕倒在厕所"。</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🟡 外资视角</h4>
+                        <ul>
+                            <li>中国传统产业（券商等）虽便宜，但美国也能找到</li>
+                            <li>新型产业一看估值，差距十万八千里</li>
+                            <li>因此外资出手中国非常少</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 反思与方向</h4>
+                        <ul>
+                            <li>科技公司盈利能力还相对较弱，需加强</li>
+                            <li>美股科技公司不仅科技强，同时很赚钱</li>
+                            <li>中国新质生产力企业上市后需兑现业绩</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"纳斯达克虽然涨了很多，但实际上市盈率也只有40多倍。如果巴菲特看中国的科技股，我估计直接就晕倒在厕所了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

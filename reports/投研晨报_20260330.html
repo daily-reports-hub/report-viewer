@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年3月30日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">反内卷加码 · 茅台逆势提价 · 平台治理</p>
+            <p class="header-date">2026年3月30日 · 周一 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">📋</div>
+                    <div class="summary-text">
+                        <strong>反内卷政策加码</strong>
+                        市场监管总局发布反不正当竞争法通知，聚焦平台经济、光伏、锂电、新能源汽车四大领域
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🍶</div>
+                    <div class="summary-text">
+                        <strong>茅台逆势提价</strong>
+                        飞天出厂价涨8.55%至1269元，零售指导价涨2.67%至1539元，释放利润储备
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">💡</div>
+                    <div class="summary-text">
+                        <strong>反内卷蕴藏机会</strong>
+                        产能过剩行业的转折点，迎来的不是几个月而是3-5年的上升周期
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">⚠️</div>
+                    <div class="summary-text">
+                        <strong>恒生科技承压</strong>
+                        平台经济反内卷短期阵痛，但长期是行业健康发展的基础
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">反内卷政策全面加码：从外卖大战到四大重点领域</h3>
+                <span class="section-tag">政策解读</span>
+            </div>
+            <div class="content">
+                <p>开年以来，反内卷与统一大市场的密集举措不断落地。市场监管总局网站先是转发<strong>"外卖大战应该停止"</strong>的文章，随后召开部分行业企业的反内卷座谈会，昨日更是正式发布<strong>《关于进一步贯彻实施中华人民共和国反不正当竞争法的通知》</strong>，对今年反内卷的重点方向和方式给出了明确指引。</p>
+
+                <p>通知要求<strong>综合运用各类反不正当竞争措施，着力防治以下重点领域</strong>的内卷式竞争：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>重点领域</th>
+                            <th>全球地位</th>
+                            <th>核心矛盾</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">平台经济</td>
+                            <td>外卖、本地生活等规模全球领先</td>
+                            <td class="trend-down">强制商户低于成本价销售，盘剥严重</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">光伏</td>
+                            <td class="trend-up">全球接近80%市占率</td>
+                            <td class="trend-down">全行业亏损，产能过剩</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">锂电</td>
+                            <td class="trend-up">全球生产与出口第一</td>
+                            <td class="trend-down">盈利企业寥寥无几</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">新能源汽车</td>
+                            <td class="trend-up">全球生产与出口总量第一</td>
+                            <td class="trend-down">盈利极少，品控安全隐患初现</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box alert">
+                    <p><strong>具体措施：</strong>精准辨识、依法查处平台企业<strong>无正当理由</strong>利用搜索排名、经营评价（如美团点评）、算法控制、限制流量、下架商品、增加费用、拖欠账款、终止交易、内部惩戒等手段，或在补贴优惠、红包折扣、满减买单等促销活动中，<strong>强制或变相强制平台内经营者以低于成本的价格销售商品</strong>，扰乱市场经济秩序。</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>"中国一直是一个缺乏规则秩序的野蛮商业文明，这种野蛮商业文明的基础就是无序的、毫无尽头的内卷。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">平台经济的盘剥困局： nobody wins</h3>
+                <span class="section-tag">深度剖析</span>
+            </div>
+            <div class="content">
+                <p>当前平台经济对商户和经营者的盘剥已达到极致。以美团等外卖平台为例，商户营收的<strong>约23%要交给平台</strong>，同时平台搞活动商户必须出钱参与。在这种模式下：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 平台商户</h4>
+                        <ul>
+                            <li>赚钱越来越难</li>
+                            <li>个体工商户生存压力大</li>
+                            <li>被迫参与低价竞争</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 平台自身</h4>
+                        <ul>
+                            <li>盈利并未显著改善</li>
+                            <li>品牌形象受损</li>
+                            <li>遭到商户与消费者双重不满</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>结果大家都陷入了<strong>"反内卷式无序竞争"</strong>——"一块钱和内插我不要钱啊我还倒贴"，诸如此类毫无道理的价格战。这种竞争没有人是赢家。</p>
+
+                <div class="highlight-box">
+                    <p><strong>文化反思：</strong>这种内卷不仅体现在商业竞争中，也体现在方方面面——包括高考学习（除韩国外，我们是世界上最"变态"的国家）。为什么不能找个机会干点更加有意义的事？非要在中国企业已经一统江湖的领域里搞得你死我活？</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">反内卷的投资逻辑：在最悲观时看到机会</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>今年反内卷的重点领域<strong>蕴藏着投资机会</strong>，但各领域治理节奏和见效方式不同，股价表现节奏也会不同。</p>
+
+                <div class="highlight-box success">
+                    <p><strong>历史镜鉴：</strong>恒生科技在这波见顶时高歌猛进，但"防止资本无序扩张"政策出台后一直调整至今。反内卷的推行是产能严重过剩行业的重要转折——它迎来的不是几个月的反弹，而是一个<strong>3-5年的上升周期</strong>。</p>
+                </div>
+
+                <p>在最困难、市场最诟病的时候，反而应该去关注是否有机会。这正是逆向投资的核心——<strong>人弃我取</strong>。</p>
+
+                <div class="quote-block">
+                    <p>"如果你一直做不到在最悲观时看到机会，最简单的方式就是不要做投资。没必要强迫自己——并不是每个人都适合做投资，就像并不是每个人都适合搞学习一样。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">茅台逆势提价：利润释放与渠道革命</h3>
+                <span class="section-tag">消费龙头</span>
+            </div>
+            <div class="content">
+                <p>茅台发布最新调价措施，在行业承压期逆势涨价：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>价格项</th>
+                            <th>调整前</th>
+                            <th>调整后</th>
+                            <th>涨幅</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>出厂价</td>
+                            <td>1169元</td>
+                            <td class="trend-up">1269元</td>
+                            <td class="trend-up">+8.55%</td>
+                        </tr>
+                        <tr>
+                            <td>零售指导价</td>
+                            <td>1499元</td>
+                            <td class="trend-up">1539元</td>
+                            <td class="trend-up">+2.67%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>从这次调价可以看出两个战略意图：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 释放利润储备</h4>
+                        <ul>
+                            <li>过去几年茅台压低零售价，市场价2000-3000元时指导价仅1499元</li>
+                            <li>把利润让给了流通环节</li>
+                            <li>此次释放的是前几年"该赚没赚"的势能储备</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 压缩经销商空间</h4>
+                        <ul>
+                            <li>出厂价涨8.55%，零售价仅涨2.67%</li>
+                            <li>经销商利润空间被进一步挤压</li>
+                            <li>通过i茅台平台+大企业直销，千方百计把经销商利润收回</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>核心逻辑：</strong>茅台这几年能保持较好业绩增长，靠的是<strong>前几年品牌的势能和蓄水池里"该赚没赚"的钱</strong>。如果没有这个储备，白酒企业这几年会很难过。像茅台这样还能"挤一挤"的，已经难能可贵。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">恒生科技：短期阵痛与长期健康</h3>
+                <span class="section-tag">市场影响</span>
+            </div>
+            <div class="content">
+                <p>近期恒生科技持续调整，投资者感受不佳。但需要放在更长的时间维度来看待：</p>
+
+                <p>平台经济反内卷短期必然带来阵痛——整治补贴大战、限制算法盘剥、规范强制促销，这些都会直接影响平台企业的营收和利润表现。但<strong>长期来看，这是行业健康发展的必要基础</strong>。</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>风险与机遇并存：</strong>恒生科技从"防止资本无序扩张"后一路调整至今，当前正处于市场情绪最悲观的时候。而反内卷政策的深入推进，恰恰可能标志着这些行业从野蛮生长走向规范发展的转折点。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

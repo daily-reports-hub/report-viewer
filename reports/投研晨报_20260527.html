@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月27日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(192,57,43,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+        
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .section-title { font-size: 22px; font-weight: 600; }
+        
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+        
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        
+        .content strong { color: var(--text-primary); font-weight: 600; }
+        
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+        
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+        
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: """;
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+        
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:last-child td { border-bottom: none; }
+        
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+        
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">商品周期 · 有色金属 · 海外市场</p>
+            <p class="header-date">2026年5月27日 · 星期三 · 音频纪要整理</p>
+        </header>
+        
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon gold">⛏️</div>
+                    <div class="summary-text">
+                        <strong>几内亚限制铝土矿出口</strong>
+                        产能占全球1/3+，中国进口2/3来自几内亚；氧化铝期货涨5%，中铝等涨停
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>商品机会回顾与展望</strong>
+                        碳酸锂/原油机会已结束；铜铝AI驱动慢牛；多晶硅等待拐点
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">⚖️</div>
+                    <div class="summary-text">
+                        <strong>商品价格领先股票</strong>
+                        商品拐点比股票提前；猪肉/黄金案例证明：价格稳住后业绩才转化
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🌍</div>
+                    <div class="summary-text">
+                        <strong>美光暴涨日韩新高</strong>
+                        海外存储芯片龙头持续强势；SpaceX相关公司同步上涨
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">几内亚限制铝土矿出口：氧化铝产业链地震</h3>
+                <span class="section-tag">商品事件</span>
+            </div>
+            <div class="content">
+                <p>几内亚宣布限制铝土矿出口，这一政策对全球氧化铝产业链产生立竿见影的冲击：</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>数据</th>
+                            <th>冲击程度</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>几内亚产能占比</td>
+                            <td class="highlight">全球1/3以上</td>
+                            <td class="trend-up">极高</td>
+                        </tr>
+                        <tr>
+                            <td>中国进口依赖度</td>
+                            <td class="highlight">2/3以上来自几内亚</td>
+                            <td class="trend-up">极高</td>
+                        </tr>
+                        <tr>
+                            <td>受影响行业</td>
+                            <td>氧化铝、电解铝、电力等</td>
+                            <td>全产业链</td>
+                        </tr>
+                        <tr>
+                            <td>期货反应</td>
+                            <td class="trend-up">氧化铝期货+5%</td>
+                            <td>即时</td>
+                        </tr>
+                        <tr>
+                            <td>股票反应</td>
+                            <td class="trend-up">中铝等涨停（~10%）</td>
+                            <td>剧烈</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box">
+                    <p><strong>政策背景：</strong>几内亚此举源于铝土矿长期供过于求，价格从70多美金腰斩至35美金左右。出口限制意在扭转价格颓势，维护本国资源利益。这是典型的<strong>资源国反击</strong>——当大宗商品价格跌至成本线附近时，资源国通过政策手段主动收缩供给。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">商品投资四方向：碳酸锂/原油已收官，铜铝/多晶硅接棒</h3>
+                <span class="section-tag">商品策略</span>
+            </div>
+            <div class="content">
+                <p>去年底/今年初提示的四大商品方向，当前处于不同阶段：</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>品种</th>
+                            <th>当前状态</th>
+                            <th>涨幅/走势</th>
+                            <th>策略判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>碳酸锂</td>
+                            <td class="trend-up">拐点已现</td>
+                            <td>涨了一倍</td>
+                            <td class="trend-down">机会结束，已到均衡价</td>
+                        </tr>
+                        <tr>
+                            <td>原油</td>
+                            <td class="trend-up">表现很好</td>
+                            <td>大幅上涨</td>
+                            <td class="trend-down">机会结束</td>
+                        </tr>
+                        <tr>
+                            <td>铜和铝</td>
+                            <td class="highlight">慢牛途中</td>
+                            <td>AI算力驱动</td>
+                            <td class="trend-up">未来两三年持续看好</td>
+                        </tr>
+                        <tr>
+                            <td>多晶硅</td>
+                            <td class="trend-down">等待拐点</td>
+                            <td>半年未创新低</td>
+                            <td class="highlight">拐点未确认，需跟踪</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 铜铝：范式变化驱动</h4>
+                        <ul>
+                            <li>原下游：建筑+制造业</li>
+                            <li>新增下游：AI算力中心</li>
+                            <li>AI驱动成为需求端重要增量</li>
+                            <li>慢牛走势，不能期待短期翻倍</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 多晶硅：拐点观察期</h4>
+                        <ul>
+                            <li>静态看基本面一塌糊涂</li>
+                            <li>但半年未再创新低</li>
+                            <li>需在4-5万价位稳住确认</li>
+                            <li>拐点后反弹速度与碳酸锂相当</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">商品价格领先股票：两个经典案例的启示</h3>
+                <span class="section-tag">投研方法论</span>
+            </div>
+            <div class="content">
+                <p>商品投资与股票投资之间存在<strong>时间差</strong>，理解这一规律是把握周期拐点的关键：</p>
+                
+                <div class="quote-block">
+                    <p>"商品价格本身的拐点会比股票的拐点提前、领先。就像黄金开始涨了半年之后，黄金很多公司的股价并没有什么动，直到黄金在2000-2500以上稳住了之后，大家才开始关注紫金矿业这些公司的投资机会。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>案例</th>
+                            <th>商品端</th>
+                            <th>股票端</th>
+                            <th>时间差</th>
+                            <th>原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>猪肉</td>
+                            <td>价格从10万→12万</td>
+                            <td>股价没怎么涨</td>
+                            <td>数月</td>
+                            <td>价格需稳定+持续性，业绩才转化</td>
+                        </tr>
+                        <tr>
+                            <td>黄金</td>
+                            <td>涨了半年</td>
+                            <td>矿业公司股价未动</td>
+                            <td>半年+</td>
+                            <td>需2000-2500稳住，市场才关注</td>
+                        </tr>
+                        <tr>
+                            <td>多晶硅</td>
+                            <td>半年未创新低</td>
+                            <td>光伏龙头股价仍弱</td>
+                            <td>待观察</td>
+                            <td>需4-5万价位稳住确认拐点</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box success">
+                    <p><strong>投资启示：</strong>如果你是投商品本身，关注价格拐点即可；如果你投的是股票，需要<strong>滞后观察</strong>——等价格稳定、业绩向财务报表转化、市场重新关注后，股价才开始表现。商品投资者领先股票投资者半年以上。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">左侧布局纪律：总量控制，不要全是逆向</h3>
+                <span class="section-tag">风控原则</span>
+            </div>
+            <div class="content">
+                <p>在铜铝慢牛、多晶硅待拐点的阶段，很多投资者容易陷入<strong>"逆向投资幻觉"</strong>：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 错误认知</h4>
+                        <ul>
+                            <li>"我是逆向投资者，别人不要的我买"</li>
+                            <li> portfolio里全是左侧、全是逆向</li>
+                            <li>认为逆向投资很简单，巴菲特不过如此</li>
+                            <li>静态看基本面差就否定一切可能性</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 正确认知</h4>
+                        <ul>
+                            <li>左侧布局意味着有看错的风险</li>
+                            <li>必须做好总量控制，不能全押</li>
+                            <li>拐点前基本面都是一塌糊涂的</li>
+                            <li>2600点时宏观、地产、生活都差，才是底部</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box alert">
+                    <p><strong>核心告诫：</strong>任何拐点出现之前，基本面都是一塌糊涂的。多晶硅现在静态看是垃圾，但如果你能在垃圾中发掘出供需改善的苗头，就是超额收益的来源。前提是——<strong>做好总量控制，不要把自己全部身家押在左侧</strong>。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">海外市场：美光暴涨，日韩新高，SpaceX产业链发酵</h3>
+                <span class="section-tag">海外动态</span>
+            </div>
+            <div class="content">
+                <p>海外市场延续强势格局：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 存储芯片</h4>
+                        <ul>
+                            <li>美光暴涨，业绩超预期</li>
+                            <li>存储周期上行确认</li>
+                            <li>HBM需求持续旺盛</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 亚太股市</h4>
+                        <ul>
+                            <li>日经持续创新高</li>
+                            <li>韩国逼近/刷新新高</li>
+                            <li>规律性兑现利润窗口</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 SpaceX产业链</h4>
+                        <ul>
+                            <li>SpaceX即将上市预期持续发酵</li>
+                            <li>相关公司同步上涨</li>
+                            <li>今晚课程梳理SpaceX产业链</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>今晚课程预告：</strong>将系统梳理即将上市的与SpaceX相关的公司情况，帮助大家了解<strong>人形机器人产业</strong>当前的发展状态，以及SpaceX上市对产业链的带动效应。</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年3月29日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(192,57,43,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+        
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .section-title { font-size: 22px; font-weight: 600; }
+        
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+        
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        
+        .content strong { color: var(--text-primary); font-weight: 600; }
+        
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+        
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+        
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+        
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:last-child td { border-bottom: none; }
+        
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+        
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">地缘冲突 · 能源危机 · 全球股市</p>
+            <p class="header-date">2026年3月29日 · 周日 · 音频纪要整理</p>
+        </header>
+        
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon red">🔴</div>
+                    <div class="summary-text">
+                        <strong>美伊战争全面升级</strong>
+                        美国改变战略，计划增派地面部队；第82空降师+海军陆战队进入中东，目标夺取哈尔克岛
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">🛢️</div>
+                    <div class="summary-text">
+                        <strong>原油突破100美元创新高</strong>
+                        布伦特和WTI均超100美元；伊朗实际封锁霍尔木兹海峡，通航效率极低
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">📉</div>
+                    <div class="summary-text">
+                        <strong>海外股市大跌挖坑</strong>
+                        美股周五跌2%，标普500回撤8.7%；日韩股市跌5%回到前低，或现年度黄金坑
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">⚖️</div>
+                    <div class="summary-text">
+                        <strong>投资策略：兑现战争受益，增配下跌资产</strong>
+                        原油能源越长越兑现；日韩股市下跌是增配机会；A股长期不受影响
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">美伊战争全面升级：地面部队即将介入</h3>
+                <span class="section-tag">地缘政治</span>
+            </div>
+            <div class="content">
+                <p>美伊冲突进入关键升级阶段。美国此前明确战略是<strong>只轰炸、不派地面部队</strong>，但近期策略发生根本性转变。</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>军事行动</th>
+                            <th>规模</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">地面作战部队</td>
+                            <td class="trend-up">计划增派1万人</td>
+                            <td>部署计划中</td>
+                        </tr>
+                        <tr>
+                            <td>第82空降师</td>
+                            <td>主力部队</td>
+                            <td class="trend-up">已进入中东</td>
+                        </tr>
+                        <tr>
+                            <td>海军陆战队</td>
+                            <td>3000-5000人</td>
+                            <td class="trend-up">两栖攻击舰抵达波斯湾</td>
+                        </tr>
+                        <tr>
+                            <td>哈尔克岛空袭</td>
+                            <td>约百个军事目标</td>
+                            <td>已完成多轮打击</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box alert">
+                    <p><strong>核心风险：</strong>美国计划<strong>夺取哈尔克岛</strong>——这是伊朗最重要的石油出口枢纽。岛上部署数千伊朗守军，若爆发地面冲突，战争将实质性升级。更危险的是"激眼效应"：打仗没有好手，原计划"别打死、别打伤"，后面就可能失控。</p>
+                </div>
+                
+                <div class="quote-block">
+                    <p>"战争就是这样，我们老话叫这个'打人没好手'。你打着打着就激眼了，原来是想别把他打死，后面就想不起来了，拿了个铁签袍子什么就开始上了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">原油突破100美元：霍尔木兹海峡的隐形封锁</h3>
+                <span class="section-tag">能源市场</span>
+            </div>
+            <div class="content">
+                <p>布伦特原油和WTI原油均<strong>突破100美元</strong>，创近期新高（除3月30日单日暴涨30%的极端情况外）。</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 伊朗策略</h4>
+                        <ul>
+                            <li>口头未宣布关闭霍尔木兹海峡</li>
+                            <li>实际通航效率极低（日过船从100艘降至2艘）</li>
+                            <li>中国商船同样被大量滞留</li>
+                            <li>用能源价格逼迫全球向美国施压</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 美国困境</h4>
+                        <ul>
+                            <li>国内爆发反战游行</li>
+                            <li>特朗普时间窗口越来越小</li>
+                            <li>不敢轰炸伊朗石油设施（怕报复升级）</li>
+                            <li>能源和产业链价格上涨反噬自身</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>战略逻辑：</strong>伊朗用"不宣布封锁但实际阻断"的方式，既避免触发美国的全面军事报复，又实质性地推高全球能源价格。<strong>能源价格上涨成为全球反对美国制约伊朗的重要抓手</strong>——美国国内也因此爆发反战游行。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">海外股市大跌：年度黄金坑再现？</h3>
+                <span class="section-tag">全球股市</span>
+            </div>
+            <div class="content">
+                <p>周五海外市场出现显著下跌，美股和日韩股市均受地缘冲突冲击。</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>市场</th>
+                            <th>跌幅</th>
+                            <th>位置</th>
+                            <th>判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>美股（纳斯达克）</td>
+                            <td class="trend-down">-2%</td>
+                            <td>标普500从高点回撤8.7%</td>
+                            <td class="highlight">若回撤15%则是年度黄金坑</td>
+                        </tr>
+                        <tr>
+                            <td>韩国股市</td>
+                            <td class="trend-down">-5%</td>
+                            <td>回到前几日暴跌最低点</td>
+                            <td class="trend-up">下跌中逐步增配</td>
+                        </tr>
+                        <tr>
+                            <td>日本股市</td>
+                            <td class="trend-down">-5%</td>
+                            <td>回到前几日暴跌最低点</td>
+                            <td class="trend-up">下跌中逐步增配</td>
+                        </tr>
+                        <tr>
+                            <td>A股</td>
+                            <td>相对抗跌</td>
+                            <td>未卷入冲突，产业链完整</td>
+                            <td class="trend-up">长期不受影响</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box success">
+                    <p><strong>历史规律：</strong>美股近几年每年都有<strong>15%以上的挖坑机会</strong>——去年是贸易战，今年是美伊冲突。如果这次能造成年度级别的15%左右大回调，那就是<strong>增配美股的好时机</strong>。</p>
+                </div>
+                
+                <div class="quote-block">
+                    <p>"平时没人给你挖坑，现在逐渐去增配。如果美国出现年度黄金坑这种级别，至少是15%左右的大回挡，那么我们可以进行增配。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">A股：置身事外的受益者</h3>
+                <span class="section-tag">中国市场</span>
+            </div>
+            <div class="content">
+                <p>从长期视角看，美伊冲突的延续对中国<strong>并非坏事</strong>。</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 中国优势</h4>
+                        <ul>
+                            <li>不直接卷入军事冲突（类似一战时的美国）</li>
+                            <li>产业链完整，抗打击能力强</li>
+                            <li>原油储备和能源安全有充分准备</li>
+                            <li>全球制造业中心地位稳固</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 短期扰动</h4>
+                        <ul>
+                            <li>若A股被恐慌情绪拖累下跌</li>
+                            <li>也是增配机会而非风险</li>
+                            <li>核心逻辑不受冲突影响</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>历史类比：</strong>一战时期的美国——不卷入冲突，产业链完善，反而在战争期间实现经济腾飞。中国当前的处境与之相似：<strong>冲突延续对中国不是坏事</strong>。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">投资策略：兑现与增配的平衡艺术</h3>
+                <span class="section-tag">操作建议</span>
+            </div>
+            <div class="content">
+                <p>基于当前局势，核心策略是<strong>"一边兑现、一边增配"</strong>的动态平衡。</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>方向</th>
+                            <th>判断</th>
+                            <th>策略</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>原油/能源链</td>
+                            <td class="trend-up">战争受益，但一定会结束</td>
+                            <td class="trend-up">越长越兑现利润，不要贪心</td>
+                        </tr>
+                        <tr>
+                            <td>韩国股市</td>
+                            <td class="trend-down">跌回前低，内生性动力仍在</td>
+                            <td class="trend-down">下跌中逐步增配，不是all in</td>
+                        </tr>
+                        <tr>
+                            <td>日本股市</td>
+                            <td class="trend-down">跌回前低，短期冲击</td>
+                            <td class="trend-down">下跌中逐步增配</td>
+                        </tr>
+                        <tr>
+                            <td>美股</td>
+                            <td class="highlight">若回撤15%则是黄金坑</td>
+                            <td class="highlight">等待更大回调后增配</td>
+                        </tr>
+                        <tr>
+                            <td>A股</td>
+                            <td class="trend-up">长期不受影响</td>
+                            <td class="trend-up">若被恐慌拖累下跌，是机会</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box alert">
+                    <p><strong>重要纪律：</strong>增配日韩股市<strong>不是all in</strong>，不是所有钱都要买日本韩国。战争什么时候结束没人能预测，但<strong>一定会结束</strong>——这是常识。在前提不满足的情况下（比如战争打三五年），策略需要彻底改变；但如果几个月能有结果，当前就是布局窗口。</p>
+                </div>
+                
+                <div class="highlight-box success">
+                    <p><strong>核心原则：</strong>战争受益板块（原油/能源）<strong>越长越兑现</strong>；受负面冲击的板块（全球股市）<strong>下跌中逐步增配</strong>。两边同时操作，保持动态平衡。</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

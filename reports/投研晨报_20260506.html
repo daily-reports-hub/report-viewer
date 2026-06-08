@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月6日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">算力全链条扩散 · 巴菲特镜鉴与牛市三原则</p>
+            <p class="header-date">2026年5月6日 · 周三 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">🚀</div>
+                    <div class="summary-text">
+                        <strong>算力从GPU扩散到全链条</strong>
+                        CPU、存储芯片、服务器芯片全面爆发，不再只盯GPU；逻辑扩散——GPU用多了CPU也会被带上
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">📈</div>
+                    <div class="summary-text">
+                        <strong>韩国指数突破7300点</strong>
+                        从5000点增配位置上涨近50%，周一涨5%、周二再涨5%，三星海力士双双创新高
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">💰</div>
+                    <div class="summary-text">
+                        <strong>巴菲特3000亿现金警示</strong>
+                        60%仓位空仓，但1999年错过纳斯达克85%涨幅、跑输大盘的教训深刻——学巴菲特但不要照搬
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🎯</div>
+                    <div class="summary-text">
+                        <strong>牛市配置三原则</strong>
+                        恒持满仓、规律性兑现利润、利润不要返场——为普通投资者提供可操作的利润保护框架
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">全球市场狂飙：算力从GPU扩散到全链条</h3>
+                <span class="section-tag">海外市场</span>
+            </div>
+            <div class="content">
+                <p>五一假期后海外市场一片大好，核心驱动力有两个：美伊之间出现积极解决问题的信号，以及全球资金对算力产业链的认知从GPU扩散到全链条。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>市场</th>
+                            <th>表现</th>
+                            <th>核心逻辑</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">纳斯达克</td>
+                            <td class="trend-up">25,326点创历史新高</td>
+                            <td>纯储（存储）和AI算力风格极端偏向</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">韩国</td>
+                            <td class="trend-up">突破7,300点（两天各涨5%）</td>
+                            <td>三星、海力士双双创新高，存储长牛凶猛</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">港股</td>
+                            <td class="trend-up">总体上涨，恒生科技反弹</td>
+                            <td>大模型类和AI相关板块涨幅较大</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>算力逻辑扩散：</strong>全球资金开始将<strong>服务器芯片、CPU、存储</strong>纳入视野，不再只盯着GPU。核心逻辑——<strong>GPU用多了，CPU用量也会被带上来；存储更是无论如何都要用。</strong>存储芯片的长牛状态比预期还要凶猛。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">巴菲特的警示：3000亿现金背后的历史轮回</h3>
+                <span class="section-tag">投资哲学</span>
+            </div>
+            <div class="content">
+                <p>巴菲特手握3000多亿美元现金（约60%仓位），引发市场对美股高位的担忧。主讲人以1998-2002年互联网泡沫完整周期为镜鉴，揭示了两个残酷真相：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>年份</th>
+                            <th>纳斯达克</th>
+                            <th>伯克希尔</th>
+                            <th>对比</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">1998</td>
+                            <td class="trend-up">+39.6%</td>
+                            <td class="trend-up">+5%</td>
+                            <td>开始分化</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">1999</td>
+                            <td class="trend-up">+85.6%</td>
+                            <td class="trend-down">-19.9%</td>
+                            <td>不买科技股不仅赚不到，还会亏钱</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">2000</td>
+                            <td class="trend-down">-39%</td>
+                            <td class="trend-up">+26.6%</td>
+                            <td>泡沫崩溃，巴菲特显绝技</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">2001</td>
+                            <td class="trend-down">-21.1%</td>
+                            <td class="trend-up">+6.5%</td>
+                            <td>危机中找最好机会</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">2002</td>
+                            <td class="trend-down">-30%</td>
+                            <td class="trend-down">-3.8%</td>
+                            <td>三年累积纳斯达克跌约67%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 真相一</h4>
+                        <ul>
+                            <li>泡沫来时理性者几乎没有生存空间</li>
+                            <li>1999年纳斯达克涨85%，伯克希尔跌20%</li>
+                            <li>不买科技股不仅赚不到钱，还会亏钱</li>
+                            <li>人性考验：能否忍受理性带来的亏损？</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 真相二</h4>
+                        <ul>
+                            <li>泡沫崩溃后烈度远超想象</li>
+                            <li>2000-2002三年纳斯达克累积跌约67%</li>
+                            <li>这三年伯克希尔是赚钱的</li>
+                            <li>真正有危机时巴菲特才能找到最好机会</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"你听了巴菲特的话，错过了一个3~5倍的科技股，你会不会骂他？会不会觉得他是个骗子？会不会觉得他老了？历史在不停地重复。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">牛市配置三原则：普通投资者的利润保护框架</h3>
+                <span class="section-tag">操作纪律</span>
+            </div>
+            <div class="content">
+                <p>主讲人提炼出牛市配置的核心三原则，为普通投资者提供可操作的利润保护框架：</p>
+
+                <div class="highlight-box">
+                    <p><strong>原则一：恒持满仓</strong></p>
+                    <p>保持满仓配置，<strong>不要没事老去猜哪天涨哪天跌</strong>。在美股、韩国、A股都一样——底部区域要敢于配置，而不是恐惧空仓。</p>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>原则二：规律性兑现利润</strong></p>
+                    <p>每赚<strong>10%~20%</strong>，就把利润拿出来。举例：韩国从5,000到7,300，100万变成150万——把50万利润拿出来，100万继续配置。拿出来的利润<strong>不要再放在权益类资产上</strong>，可以放固收、现金。</p>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>原则三：利润不要返场（最重要）</strong></p>
+                    <p>不要轻易把兑现的利润再投回去。反面教材：2001-2003年每年跌20%以上，利润都兑现出来了，看到跌30%就冲回来，回来又跌——<strong>利润被一口口吃掉</strong>。正确做法：利润兑现后，像巴菲特一样放着现金/固收，等真正的危机到来。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">投资哲学：学巴菲特，但不要照搬巴菲特</h3>
+                <span class="section-tag">心态管理</span>
+            </div>
+            <div class="content">
+                <p>主讲人对"学巴菲特"给出了非常务实的建议：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 可以做到的</h4>
+                        <ul>
+                            <li>保留基本配置 + 大比例兑现利润</li>
+                            <li>既不错过行情，又保护胜利果实</li>
+                            <li>韩国5000→7300的50%涨幅可以吃到</li>
+                            <li>利润拿出来后不再返场</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 不要做的</h4>
+                        <ul>
+                            <li>像巴菲特一样看空美股、空仓科技股</li>
+                            <li>做好心理准备：科技股仍然很疯狂</li>
+                            <li>但你没赚到钱，甚至像1999年那样亏钱</li>
+                            <li>完全错过85%的上涨是可惜的</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>适用边界：</strong>对于<strong>高阶投资者</strong>，可以打破规则、灵活操作。对于<strong>小白或非专业选手</strong>，这三句话是在市场里保住利润的很好方式。不同市场阶段，三个原则的重要性不同：二三月份大跌时，"规律性兑现利润"的重要性凸显；市场恐慌时，"恒持满仓"的重要性凸显。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

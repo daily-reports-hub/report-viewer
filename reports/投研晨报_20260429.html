@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月29日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">4月政治局会议解读 · 存量优化与六张网</p>
+            <p class="header-date">2026年4月29日 · 周三 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon blue">📊</div>
+                    <div class="summary-text">
+                        <strong>GDP目标调至4.5%-5%</strong>
+                        一季度做到5%超预期，固定资产投资、工业增加值等核心指标表现不错，但基础仍需巩固
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">⚙️</div>
+                    <div class="summary-text">
+                        <strong>存量政策优化为主</strong>
+                        不是出更多新政策，而是把已推出的政策靠前落实；降准降息仍有空间，迟早的事情
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">🌐</div>
+                    <div class="summary-text">
+                        <strong>六张网7万亿投资</strong>
+                        水网、新型电网、算力网、新一代通信网、城市地下管网、物流网——十五期间基建核心方向
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">💡</div>
+                    <div class="summary-text">
+                        <strong>"投资于人"重大转向</strong>
+                        从"建机构买设备"转向"钱给到人身上"；反内卷、稳房价、稳猪价获高层定调
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">经济形势：起步有利，基础待固</h3>
+                <span class="section-tag">政策判断</span>
+            </div>
+            <div class="content">
+                <p>会议对当前经济形势给出了务实的总体判断：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>指标</th>
+                            <th>数据/判断</th>
+                            <th>解读</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">一季度GDP</td>
+                            <td class="trend-up">5%</td>
+                            <td>在政策靠前发力下实现，超预期</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">全年目标</td>
+                            <td>4.5%~5%区间</td>
+                            <td>不再硬守5%，给政策更大灵活度</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">核心指标</td>
+                            <td class="trend-up">固投、工业增加值表现不错</td>
+                            <td>出口也一如既往强劲</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">风险提示</td>
+                            <td class="trend-down">向好趋势需进一步巩固</td>
+                            <td>基础并不牢固，不可盲目乐观</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>背景对照：</strong>在去年的低基数（各方面情况不太乐观）之上，市场普遍担心一季度维持5%很困难。但实际上核心指标表现很不错，说明<strong>政策靠前发力效果显著</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">政策基调：存量优化为主，增量做优为辅</h3>
+                <span class="section-tag">政策取向</span>
+            </div>
+            <div class="content">
+                <p>本次会议的政策基调延续了两会表述，但在落地效率上提出了更高要求：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>🟡 存量政策</h4>
+                        <ul>
+                            <li>当前政策总量足够</li>
+                            <li>关键是用足、落实、靠前发力</li>
+                            <li>不是出更多新政策</li>
+                            <li>而是把已推出的政策落地</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 增量优化</h4>
+                        <ul>
+                            <li>新增产能要高附加值</li>
+                            <li>与高质量发展一脉相承</li>
+                            <li>盘活存量（房地产、商业物业）</li>
+                            <li>地方政府收房做保障房</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>货币与财政政策：</strong>精准有效实施更加积极的财政政策和适度宽松的货币政策。<strong>降准降息还有空间</strong>，只是迟早的事情。迟迟未动的原因：需观察美国动向，保持与全球节奏基本一致。一季度经济表现较好与<strong>专项债发行速度</strong>有关——当前专项债发行明显好于2025年同期，二季度政府债发行节奏<strong>不会衰减</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">"投资于人"：从物到人的重大转向</h3>
+                <span class="section-tag">政策新表述</span>
+            </div>
+            <div class="content">
+                <p>本次会议一个极具标志性的新表述是<strong>"投资于人"</strong>，代表了政策资源分配逻辑的根本转变：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>投资于物（旧模式）</th>
+                            <th>投资于人（新模式）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">养老</td>
+                            <td class="trend-down">补贴养老机构买设备</td>
+                            <td class="trend-up">补贴直接给到享受服务的人</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">科研</td>
+                            <td class="trend-down">钱给到研究院买设备</td>
+                            <td class="trend-up">更多资金给到团队本身，改善待遇、促进交流</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">本质</td>
+                            <td class="trend-down">钱给到机构和硬件</td>
+                            <td class="trend-up">钱给到人身上，激发人的能动性</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>产业链安全不变：</strong>推进科技自立自强、产业链自主可控——做国内大循环的必然路径。这一表述<strong>一直没有变</strong>，也是重点强调的方向。</p>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>聚焦服务业：</strong>商品领域供给已全面过剩，扩大内需怎么办？<strong>服务业肯定是重点发力方向。</strong>不管是扩大消费的新场景，还是两新政策，都指向服务业升级。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">六张网：十五期间万亿级基建核心方向</h3>
+                <span class="section-tag">基建投资</span>
+            </div>
+            <div class="content">
+                <p>六张网是"十五"规划以来重点的基建方向，代表了传统基建向基建升级的核心部署：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>网络</th>
+                            <th>方向</th>
+                            <th>受益领域</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">水网</td>
+                            <td>水利基础设施</td>
+                            <td>水利工程、管道建设</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">新型电网</td>
+                            <td>能源电力升级</td>
+                            <td>特高压、智能电网</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">算力网</td>
+                            <td>AI算力基础设施</td>
+                            <td>智算中心、数据中心</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">新一代通信网</td>
+                            <td>6G/卫星通信</td>
+                            <td>通信设备、卫星互联网</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">城市地下管网</td>
+                            <td>市政基础设施</td>
+                            <td>管网改造、城市更新</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">物流网</td>
+                            <td>现代物流体系</td>
+                            <td>物流枢纽、供应链</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>投资规模：</strong>国家发改委主任此前讲到，2026年统筹六张网建设，叠加综合立体交通、低空经济、人工智能+教育等重点领域，<strong>全年投资规模会超过7万亿</strong>。落实到上市公司层面，基本都是<strong>中字头央企</strong>的相关公司。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">反内卷、稳房价、稳猪价获高层定调</h3>
+                <span class="section-tag">行业影响</span>
+            </div>
+            <div class="content">
+                <p>会议对多个重点行业给出了明确政策信号：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 反内卷受益方向</h4>
+                        <ul>
+                            <li>深入整治反内卷式竞争</li>
+                            <li>锂电：产能过剩行业</li>
+                            <li>光伏：产能过剩行业</li>
+                            <li>养猪：产能去化加速</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 房地产与猪价</h4>
+                        <ul>
+                            <li>一二线城市房价会企稳</li>
+                            <li>主建向其他城市扩散</li>
+                            <li>猪肉价格见历史底部</li>
+                            <li>反应在猪企业绩需时间</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"在'反内卷'叠加'稳住猪肉价格'的表述之下，猪肉价格会见到比较重要的历史底部。但反应在猪企业绩上还需要时间。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

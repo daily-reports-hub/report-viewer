@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年4月30日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">一季报全景 · 万亿利润俱乐部与科技牛</p>
+            <p class="header-date">2026年4月30日 · 周四 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">🌎</div>
+                    <div class="summary-text">
+                        <strong>美股四巨头利润炸裂</strong>
+                        谷歌/微软年化利润超1万亿人民币，亚马逊1450亿接近工行水平，Meta稳健增长——涨这么多估值仍未失控
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">🇨🇳</div>
+                    <div class="summary-text">
+                        <strong>国内消费筑底企稳</strong>
+                        格力维持7.4%股息率，美的伊利报表改善，但慢周期属性决定拐点仍需耐心追踪
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">💻</div>
+                    <div class="summary-text">
+                        <strong>寒武纪业绩释放</strong>
+                        Q1营收+159%、扣非净利润9.34亿，进入利润兑现期，但5600亿市值已前置定价预期
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🎯</div>
+                    <div class="summary-text">
+                        <strong>策略再强调</strong>
+                        拥抱科技牛，尊重老灯，绝不能全仓老灯——全是老灯就是你变老的开始
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">美股科技四巨头：AI驱动下的"万亿利润俱乐部"</h3>
+                <span class="section-tag">美股龙头</span>
+            </div>
+            <div class="content">
+                <p>主讲人以"一万亿利润"作为国际科技巨头的标尺，系统梳理了四大美股龙头的超预期业绩：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>Q1营收</th>
+                            <th>Q1利润</th>
+                            <th>年化利润（人民币）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">谷歌</td>
+                            <td class="trend-up">$1,099亿（超预期）</td>
+                            <td class="trend-up">$397亿（超预期）</td>
+                            <td class="trend-up">>1万亿</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">微软</td>
+                            <td class="trend-up">$828亿（超预期）</td>
+                            <td class="trend-up">$384亿</td>
+                            <td class="trend-up">>1万亿</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">亚马逊</td>
+                            <td class="trend-up">$1,815亿（超预期）</td>
+                            <td class="trend-up">$238亿（超预期）</td>
+                            <td class="trend-up">~1,450亿</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">Meta</td>
+                            <td class="trend-up">$563亿（超预期）</td>
+                            <td class="trend-up">$228亿</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="quote-block">
+                    <p>"三星海力士的标准就是一年有一万亿人民币的利润——没有一万亿利润，不要说自己是巨头。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="highlight-box success">
+                    <p><strong>为什么涨这么多估值还没崩？</strong>美股核心科技公司在AI趋势驱动下，盈利能力极为强劲——<strong>利润增速消化了估值。</strong>谷歌、微软年化利润均超过一万亿人民币，亚马逊约1,450亿人民币已接近A股最厉害公司（工商银行）的盈利水平。这是美股在高位仍能维持的核心逻辑。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">国内消费：筑底企稳，慢周期仍需耐心</h3>
+                <span class="section-tag">消费板块</span>
+            </div>
+            <div class="content">
+                <p>国内消费板块（家电、乳制品）一季报呈现筑底企稳迹象，但慢周期属性决定了全面复苏仍需时间：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>核心数据</th>
+                            <th>判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">格力电器</td>
+                            <td>年报利润-19%；一季报营收/利润+3%；股息率约7.4%</td>
+                            <td>维持高股息，一季报边际改善</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">美的集团</td>
+                            <td>一季报营收+2.25%，净利润+2%</td>
+                            <td>消费补贴退坡下仍正增长，非常稳健</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">伊利股份</td>
+                            <td>去年营收+0.16%、净利润+37%；今年Q1营收+5.5%、扣非净利润+15%</td>
+                            <td>报表持续改善，复苏趋势确认</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><strong>消费观察方法论：</strong>与其天天问"白酒和乳制品什么时候见底"，不如追踪基本面拐点和催化剂什么时候出现——这件事更靠谱。消费的特点是<strong>慢周期</strong>：各行业都好了、大家赚到钱了，消费才会起来。要像追踪锂矿和光伏一样，密切追踪消费品的基本面变化。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">国内科技：寒武纪业绩释放，中芯高增长低估值</h3>
+                <span class="section-tag">科技板块</span>
+            </div>
+            <div class="content">
+                <p>国内科技公司一季报出现明显分化，寒武纪进入业绩释放期，中芯国际延续高增长：</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>公司</th>
+                            <th>Q1营收</th>
+                            <th>Q1利润</th>
+                            <th>判断</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">寒武纪</td>
+                            <td class="trend-up">28.85亿（+159%）</td>
+                            <td class="trend-up">扣非净利润9.34亿（+23~28%）</td>
+                            <td>进入业绩释放期，但估值已前置定价</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">中芯国际</td>
+                            <td class="trend-up">业绩+75%</td>
+                            <td>—</td>
+                            <td>典型高增长低估值，配置不用慌</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box alert">
+                    <p><strong>寒武纪估值逻辑回顾：</strong>前年/去年市场逻辑是——如果AI行业有1万亿人民币利润，寒武纪占1%就是100亿利润，给50倍PE好像还OK。现在确实是朝这个场景在发展，但<strong>市场很早就把市值顶到了5,600亿</strong>。简单年化约45亿利润，对应PE约10-20倍，不会觉得特别离谱，但股价表现还要<strong>再看</strong>。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">年度策略再强调：拥抱科技牛，尊重老灯</h3>
+                <span class="section-tag">投资策略</span>
+            </div>
+            <div class="content">
+                <p>主讲人对全年配置策略给出了明确的再强调：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 科技牛是主角</h4>
+                        <ul>
+                            <li>今年牛市核心驱动力是科技</li>
+                            <li>不是老灯（传统蓝筹/消费）</li>
+                            <li>科技是进攻矛</li>
+                            <li>要拥抱、要重仓</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>🟡 尊重老灯</h4>
+                        <ul>
+                            <li>老灯有性价比高的公司</li>
+                            <li>如中芯国际高增长低估值</li>
+                            <li>阶段性会有较好表现</li>
+                            <li>老灯是防守盾</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-block">
+                    <p>"你持有的全是老灯，就是你变老的开始——证明你已经思路老化了。今年牛市再讲一遍：科技牛是主角，不是老灯。你用半老灯的原因是因为老灯确实有一些性价比很高增长也很快的公司，所以阶段性老灯也会有比较好的表现，但是你不能全都是他。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <div class="highlight-box alert">
+                    <p><strong>核心纪律：</strong>科技是进攻矛，老灯是防守盾；<strong>全是矛太激进，全是盾太保守。</strong>去年可以全仓科技不尊重老灯，今年要<strong>拥抱科技、尊重老灯</strong>——两者都要有，但权重不能颠倒。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

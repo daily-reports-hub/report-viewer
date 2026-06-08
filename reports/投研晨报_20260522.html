@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年5月22日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+        
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(192,57,43,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+        
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .section-title { font-size: 22px; font-weight: 600; }
+        
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+        
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+        
+        .content strong { color: var(--text-primary); font-weight: 600; }
+        
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+        
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+        
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+        
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: """;
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+        
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+        
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        
+        .data-table tr:last-child td { border-bottom: none; }
+        
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+        
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">A股策略 · 牛市心态 · 均衡配置</p>
+            <p class="header-date">2026年5月22日 · 星期五 · 音频纪要整理</p>
+        </header>
+        
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon red">📉</div>
+                    <div class="summary-text">
+                        <strong>A股独跌亚太暴涨</strong>
+                        日韩大涨，上证跌2%，量化踩踏+风格切换阵痛导致单日深调
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">🧠</div>
+                    <div class="summary-text">
+                        <strong>牛市信仰是赚钱前提</strong>
+                        十年一遇的牛市，4000点不是顶；没有信仰的人，去年没赚到，后面也赚不到
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">⚖️</div>
+                    <div class="summary-text">
+                        <strong>拥抱科技，尊重老邓</strong>
+                        科技涨多了不要全卖成老邓，老邓没涨也不要全割成科技；均衡配置是核心纪律
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon green">📐</div>
+                    <div class="summary-text">
+                        <strong>跌时加一点，但要设上限</strong>
+                        错杀是机会，但单一板块持仓设上限（如芯片最多25%），始终保持组合均衡
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">亚太暴涨A股独跌：量化踩踏与风格切换的共振</h3>
+                <span class="section-tag">盘面解析</span>
+            </div>
+            <div class="content">
+                <p>昨日亚太市场形成鲜明对比：日韩股市在前序调整后大涨，而上证指数单日重挫2%。表面看是独立事件，实则是<strong>多重因素共振</strong>的结果：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 下跌触发因素</h4>
+                        <ul>
+                            <li>券商/消费/养殖/医药上午刚有动作，资金形成"机械记忆"式撤退</li>
+                            <li>量化监管传闻引发高频策略集中止损</li>
+                            <li>成长方向连续暴涨后，风格切换预期自我强化</li>
+                            <li>跌幅超1%后触发量化割肉盘，形成踩踏</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>🟢 本质定性</h4>
+                        <ul>
+                            <li>牛市中途的正常波折，非趋势终结</li>
+                            <li>量化"六亲不认"的抛售创造错杀机会</li>
+                            <li>老邓（传统动能）性价比在提升</li>
+                            <li>单次深调不改十年一遇的牛市格局</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>量化监管辨析：</strong>真正要限制的是<strong>高频技术面量化</strong>（如15秒扫描一次市场、一天交易上百次），这类策略只提供流动性、不提供稳定性，本质是"追涨杀跌割散户"。基于基本面的低频量化不仅不会受打击，反而是市场需要的策略类型。监管方向没问题，短期阵痛带来长期生态改善。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">牛市心态课：没有信仰的人，注定被洗出去</h3>
+                <span class="section-tag">投资者教育</span>
+            </div>
+            <div class="content">
+                <p>这一轮是<strong>十年一遇的牛市</strong>，4000点不是最终高点。但牛市里最大的风险不是跌，而是<strong>没有信仰的人反复被割</strong>：</p>
+                
+                <div class="quote-block">
+                    <p>"涨到3800、3900、4000，你买一点；涨到4100赚了一点；这两天一跌，害怕了，割肉出来，出来的很多板块还是割肉的。然后呢，过两天又到4500了，你又坐不住了，又进去。这就是牛市里为什么亏钱。你只要大的牛市里面的波段经历过三次，牛市就跟你拜拜了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+                
+                <p>牛市亏钱的经典路径（"三碗水"模型）：</p>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>阶段</th>
+                            <th>市场情绪</th>
+                            <th>散户操作</th>
+                            <th>结果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>第一波上涨</td>
+                            <td>将信将疑</td>
+                            <td>小仓位试探买入</td>
+                            <td>赚了点蝇头小利</td>
+                        </tr>
+                        <tr>
+                            <td>第一次回调</td>
+                            <td>恐慌蔓延</td>
+                            <td>割肉止损</td>
+                            <td>实际亏损有限，但心态崩了</td>
+                        </tr>
+                        <tr>
+                            <td>第二波上涨</td>
+                            <td>FOMO发作</td>
+                            <td>追高买回，仓位更大</td>
+                            <td>成本抬高，风险累积</td>
+                        </tr>
+                        <tr>
+                            <td>第二次回调</td>
+                            <td>再次恐慌</td>
+                            <td>再次割肉</td>
+                            <td>亏损扩大</td>
+                        </tr>
+                        <tr>
+                            <td>第三波上涨</td>
+                            <td>彻底疯狂</td>
+                            <td>满仓杀入</td>
+                            <td class="highlight">挂在山顶</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="highlight-box alert">
+                    <p><strong>核心告诫：</strong>如果你到现在还在怀疑"这是不是牛市"、"4000点是不是顶"，那你去年和上半年大概率没赚到钱，后面也很难赚到。没有信仰的人，千万估计是没赚到什么钱的——因为<strong>你不相信，所以不敢重仓；不敢重仓，所以赚不到大钱</strong>。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">操作纪律：横时满舱 + 规律性兑现利润 + 设上限</h3>
+                <span class="section-tag">操作策略</span>
+            </div>
+            <div class="content">
+                <p>应对本轮回调及后续波动的三大纪律：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card neutral">
+                        <h4>📐 纪律一：横时满舱</h4>
+                        <ul>
+                            <li>不要试图预判哪天见顶</li>
+                            <li>不要猜测6000点还是8000点还是10000点</li>
+                            <li>持有优质筹码，让利润奔跑</li>
+                            <li>牛市最大的成本是空仓</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card neutral">
+                        <h4>💰 纪律二：规律性兑现利润</h4>
+                        <ul>
+                            <li>100万赚了10万，把10万利润拿出来</li>
+                            <li>兑现的利润不要返场</li>
+                            <li>不是猜顶，是机械性地保存胜利果实</li>
+                            <li>这是牛市里不把成果亏回去的不二法门</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box success">
+                    <p><strong>纪律三：跌时加一点，但要设上限。</strong>很多同学只听前半句"跌了加一点"，结果配置里全是芯片科技，这是不对的。正确做法：设定单一板块持仓上限（如芯片最多25%），保持组合均衡。始终有可能看错，不能把全部身家押在一个方向上。</p>
+                </div>
+                
+                <div class="quote-block">
+                    <p>"我一般会设定一个比例的上限。比如一开始芯片科技有15%，它总跌，别的东西总涨（韩国涨了、原油涨了、美国涨了），利润除了规律性兑现一部分之外，这些东西的比例我会逐渐调到芯片科技上面，但我也会为芯片科技设一个上限——最多补到25%，补到25之后就不动了。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">"拥抱科技，尊重老邓"：左侧右侧均衡配置</h3>
+                <span class="section-tag">配置框架</span>
+            </div>
+            <div class="content">
+                <p>当前市场最大的配置误区是<strong>两极化</strong>：要么全仓科技害怕错过，要么全仓老邓（传统动能）害怕追高。正确的姿态是均衡：</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>❌ 常见错误</h4>
+                        <ul>
+                            <li>科技涨得多→全卖科技换老邓→只享受牛市一部分</li>
+                            <li>老邓没涨→全割老邓追科技→挂在山顶</li>
+                            <li>白酒拿六年→牛市基本浪费→现在焦虑割了跑科技</li>
+                            <li>只听"跌了加一点"→单一板块超配→风险集中</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card positive">
+                        <h4>✅ 正确姿势</h4>
+                        <ul>
+                            <li>科技+老邓均衡持有，不因涨跌大幅调仓</li>
+                            <li>左侧（未涨板块）+右侧（已涨板块）均衡</li>
+                            <li>单一板块设上限，组合保持动态再平衡</li>
+                            <li>白酒/消费如果占比1/3以下，不必焦虑割肉</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p><strong>近期讲课逻辑：</strong>近期讲养殖、锂电等，不是说只看好这些，而是这些<strong>快到景气拐点或已经见到拐点</strong>，后面可能有较大机会。芯片、航天等去年前年系统讲过，近期不会重复讲。这不是"放弃科技"，而是<strong>在均衡配置框架下，补充左侧布局</strong>。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">暴跌时保持好心情：成熟投资者的终极检验</h3>
+                <span class="section-tag">心态修炼</span>
+            </div>
+            <div class="content">
+                <p>本轮调整的本质是牛市中途的波折，而非趋势终结。回顾中国改革开放40多年，每十年一个关口都会有人犹豫怀疑，但<strong>每十年过后又迎来新一轮向上动力</strong>。股市亦然。</p>
+                
+                <div class="quote-block">
+                    <p>"暴跌的时候保持好心情，这是检验你是不是一个成熟投资者的关键指标。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+                
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 成熟投资者特征</h4>
+                        <ul>
+                            <li>暴跌时不恐慌，反而看到错杀机会</li>
+                            <li>不因单日涨跌改变中长期判断</li>
+                            <li>有纪律地执行预设策略</li>
+                            <li>单一持仓设上限，组合风险可控</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 不成熟投资者特征</h4>
+                        <ul>
+                            <li>跌了害怕，涨了更害怕</li>
+                            <li>反复横跳，两头挨打</li>
+                            <li>没有信仰，牛市跟你拜拜</li>
+                            <li>最终夏欢路（瞎欢乐）满仓滚下山</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box success">
+                    <p><strong>今日寄语：</strong>祝大家账户长红，天天开心——<strong>尤其是在暴跌的时候，更要保持好心情。</strong>这不是心灵鸡汤，而是区分赢家与输家的分水岭。</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
