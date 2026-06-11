@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投研晨报 · 2026年6月11日</title>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-elevated: #1c2128;
+            --border: #30363d;
+            --gold: #d4a853;
+            --gold-light: #e8c87a;
+            --red: #c0392b;
+            --green: #27ae60;
+            --blue: #58a6ff;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-sub {
+            color: var(--text-secondary);
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .header-date {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: "SF Mono", Monaco, monospace;
+        }
+
+        .executive-summary {
+            background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(39,174,96,0.05));
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .executive-summary h2 {
+            font-size: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .executive-summary h2::before { content: "◆"; font-size: 10px; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .summary-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .summary-icon.gold { background: rgba(212,168,83,0.15); }
+        .summary-icon.red { background: rgba(192,57,43,0.15); }
+        .summary-icon.green { background: rgba(39,174,96,0.15); }
+        .summary-icon.blue { background: rgba(52,152,219,0.15); }
+
+        .summary-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .summary-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), #b8943a);
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; }
+
+        .section-tag {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            background: rgba(212,168,83,0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212,168,83,0.2);
+        }
+
+        .content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .content strong { color: var(--text-primary); font-weight: 600; }
+
+        .highlight-box {
+            background: var(--bg-elevated);
+            border-left: 3px solid var(--gold);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box.alert { border-left-color: var(--red); }
+        .highlight-box.success { border-left-color: var(--green); }
+        .highlight-box p { margin: 0; font-size: 15px; }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .impact-card {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-card h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .impact-card.positive h4 { color: var(--green); }
+        .impact-card.negative h4 { color: var(--red); }
+        .impact-card.neutral h4 { color: var(--gold); }
+
+        .impact-card ul {
+            list-style: none;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .impact-card ul li {
+            padding: 3px 0;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .impact-card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .quote-block {
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: "\201C";
+            font-size: 48px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            line-height: 1;
+        }
+
+        .quote-block p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-primary);
+            padding-left: 24px;
+            font-size: 16px;
+        }
+
+        .quote-author {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .data-table .trend-up { color: var(--green); font-weight: 600; }
+        .data-table .trend-down { color: var(--red); font-weight: 600; }
+        .data-table .highlight { color: var(--gold); font-weight: 600; }
+
+        .footer {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .footer .disclaimer {
+            font-size: 13px;
+            color: #484f58;
+            max-width: 600px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .summary-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-badge">VIP Research Brief</div>
+            <h1>投研晨报</h1>
+            <p class="header-sub">PPI继续新高，美股黄金大跌</p>
+            <p class="header-date">2026年6月11日 · 周四 · 音频纪要整理</p>
+        </header>
+
+        <div class="executive-summary">
+            <h2>核心摘要</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="summary-icon green">📈</div>
+                    <div class="summary-text">
+                        <strong>中国PPI再创新高</strong>
+                        5月PPI同比增速持续攀升，AI算力+储能需求拉动有色金属和电线电缆价格同比涨22%
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon red">🔴</div>
+                    <div class="summary-text">
+                        <strong>美伊冲突骤然升级</strong>
+                        美国阿帕奇直升机在阿曼湾被伊朗无人机撞击坠毁，双方互射导弹，地缘黑天鹅飞出
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon gold">🏅</div>
+                    <div class="summary-text">
+                        <strong>黄金大跌近4%</strong>
+                        COMEX黄金受地缘冲突+美元走强双重冲击大跌，但投研判断已处均衡位，不宜杀跌
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon blue">📉</div>
+                    <div class="summary-text">
+                        <strong>美股震荡消化期</strong>
+                        纳斯达克收跌，6-7月以震荡为主。没配置的同学：小跌小买，大跌大买，不要上头
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">中国PPI与CPI：PPI持续创新高</h3>
+                <span class="section-tag">宏观数据</span>
+            </div>
+            <div class="content">
+                <p>5月份中国物价数据发布，<strong>CPI上涨1.2%，环比回落0.1%</strong>，整体消费仍显不振。除鸡蛋等少数品类涨价外，大部分消费品价格维持平淡。但好在CPI持续保持在正区间，通胀环境总体温和可控。</p>
+
+                <p><strong>PPI数据则呈现明显亮点：</strong>5月PPI同比增速再创新高，自今年3月回正以来，连续数月保持同比和环比双增长。这是历史上非常少见的现象——此前PPI曾连续十几个季度处于负区间，类似情况只在2014年出现过。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>品类</th>
+                            <th>同比增速</th>
+                            <th>驱动因素</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">有色金属+电线电缆</td>
+                            <td class="trend-up">+22%</td>
+                            <td>AI算力与储能需求传导</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">化工原料</td>
+                            <td class="trend-up">+11.8%</td>
+                            <td>原油价格高位带动</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">燃料动力</td>
+                            <td class="trend-up">+10%</td>
+                            <td>能源价格支撑</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box success">
+                    <p><strong>核心判断：</strong>去年年底投研团队预计下半年PPI转正即为较好势头，但<strong>由于美伊战争导致原油价格上涨和AI算力需求暴力拉动</strong>，PPI修复速度远超预期。下半年PPI整体维持正增长是大概率事件。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">美国CPI与降息预期：4.2%在预期内</h3>
+                <span class="section-tag">全球市场</span>
+            </div>
+            <div class="content">
+                <p>美国5月CPI数据为<strong>4.2%</strong>，这是近期的一个较高数值。但考虑到短期原油冲击因素，华尔街整体分析认为该数据在预期范围之内，与市场预期基本一致。</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>关键影响：</strong>4.2%的CPI肯定<strong>不支持6月份、9月份马上降息</strong>。市场对此仍比较担忧，美联储短期内维持高利率的概率较大。</p>
+                </div>
+
+                <p>这意味着：</p>
+                <p>第一，美元指数短期内大概率维持强势，对黄金、新兴市场资产形成压制。</p>
+                <p>第二，全球流动性拐点延后，风险资产的估值扩张空间受限。</p>
+                <p>第三，中美利差维持高位，人民币汇率仍面临一定压力。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">美伊冲突升级：地缘黑天鹅飞出</h3>
+                <span class="section-tag">地缘政治</span>
+            </div>
+            <div class="content">
+                <p>6月9日，<strong>美国一架阿帕奇直升机在阿曼湾坠毁</strong>，初步评估为伊朗无人机撞击导致，未造成人员伤亡。事件发生后局势迅速升级：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card negative">
+                        <h4>🔴 美方反应</h4>
+                        <ul>
+                            <li>对伊朗20多处基础设施实施打击</li>
+                            <li>军事报复力度为近期最大</li>
+                            <li>中东局势骤然紧张</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card negative">
+                        <h4>🔴 伊方反应</h4>
+                        <ul>
+                            <li>对美军基地发射多轮导弹</li>
+                            <li>大部分导弹被拦截</li>
+                            <li>双方进入螺旋升级模式</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p><strong>市场即时反应：</strong></p>
+                <p>冲突消息传出后，国际金融市场剧烈波动——美股纳斯达克显著收跌，<strong>黄金大跌接近4%</strong>（COMEX黄金），原油则出现一定程度上涨。</p>
+
+                <div class="highlight-box alert">
+                    <p><strong>注意：</strong>黄金在地缘冲突中通常被视为避险资产上涨，但此次却出现大跌，说明<strong>美元的强势和美联储降息预期延后</strong>对黄金形成了更强的压制力，地缘冲突的避险溢价被美元逻辑盖过。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">黄金与海外市场：大跌后的策略</h3>
+                <span class="section-tag">资产配置</span>
+            </div>
+            <div class="content">
+                <p><strong>黄金：不要杀跌</strong></p>
+                <p>黄金大跌接近4%后，很多高位被套的同学可能心态再次崩溃。但投研团队明确指出：<strong>当前不是杀跌黄金的好时候。</strong></p>
+
+                <div class="quote-block">
+                    <p>"黄金到了现在这个状态，你之前5000多、5500的时候大家一致看好黄金，那个时候你没有听我们的劝兑现利润的话，现在这个时候也不是一个你杀跌的好时候。中国央行为代表的全球央行还在进一步增持。心情不好的时候你就反过来想想：当时5000、5500的时候你买黄金，你建立的那些信仰，现在是不是一个都没有了？如果不是，你也不用那么着急下那个杀手。"</p>
+                    <div class="quote-author">— 投研核心观点</div>
+                </div>
+
+                <p><strong>海外市场：震荡消化期</strong></p>
+                <p>美股在全面新高之后，本身就有调整需求。6-7月份面临美联储议息、大型IPO（SpaceX）等多重因素，市场以震荡为主。</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>投资者类型</th>
+                            <th>策略建议</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="highlight">尚未配置海外</td>
+                            <td>小跌小买，大跌大买，不要上头。用定投方式参与震荡期</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight">已配置且已兑现利润</td>
+                            <td>趴着不动。纳斯达克从2万涨到2.7万后，再涨30%的可能性几乎没有</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">SpaceX IPO与近期市场节奏</h3>
+                <span class="section-tag">事件驱动</span>
+            </div>
+            <div class="content">
+                <p>SpaceX即将IPO，这是近期海外市场最受关注的事件之一。对于不同参与方式，策略应有所区分：</p>
+
+                <div class="impact-grid">
+                    <div class="impact-card positive">
+                        <h4>🟢 打新参与</h4>
+                        <ul>
+                            <li>如果能参与打新，可以参与</li>
+                            <li>打新风险相对可控</li>
+                            <li>中东土豪为主要认购方</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card alert">
+                        <h4>🔴 二级市场买入</h4>
+                        <ul>
+                            <li>需看上市后的价格定位</li>
+                            <li>不要盲目追高</li>
+                            <li>高估值IPO后破发风险存在</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>整体节奏：</strong>6-7月海外市场以震荡消化为主，没有海外配置的同学应保持耐心，用定投方式在震荡期中逐步建仓。不要因为某一天跌了2%就全仓冲进去——<strong>现在不是上坡路，是整理期。</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>本报告基于音频纪要整理，仅供内部研究参考</p>
+            <p class="disclaimer">
+                风险提示：市场有风险，投资需谨慎。本报告所载信息、意见、推测仅反映音频内容中的观点，不构成对任何人的投资建议，亦不作为买卖、认购证券或其他金融工具的邀请或保证。投资者据此操作，风险自担。
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
